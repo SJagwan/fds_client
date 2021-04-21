@@ -5,9 +5,9 @@ import ViewCategory from "../Components/Category/ViewCategory";
 const CategoryPage = () => {
     return ( 
         <div>
-           {/* {<AddCategory/>} */}
+           {<AddCategory/>}
            {/* {<UpdateCategory/>} */}
-           {<ViewCategory/>}
+           {/* {<ViewCategory/>} */}
         </div>
      );
 }

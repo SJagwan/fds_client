@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import Nav from './Components/Nav'
+import Nav from './components/Nav'
 
 import { Form, Button } from 'react-bootstrap'
-import RestaurantPage from './Pages/RestaurantPage';
+import RestaurantPage from './pages/RestaurantPage';
 
 class App extends React.Component {
   render() {

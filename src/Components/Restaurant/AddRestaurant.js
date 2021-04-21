@@ -1,7 +1,8 @@
 import { useState } from "react";
+import DisplayRestaurant from "./DisplayRestaurant";
 
 const AddRestaurant = () => {
-  const add = {
+  const restaurantMock = {
     restaurantName: "Chawla",
     managerName: "Mayank",
     contactNumber: "9999955555",
@@ -23,99 +24,64 @@ const AddRestaurant = () => {
     city: "",
     state: "",
     country: "",
-    pincode: "",
-    add: undefined,
+    pincode: ""
+
   });
-  const onHandleRestaurantName = (e) => {
-    setState({ ...state, restaurantName: e.target.value });
+  const response ={restaurant:undefined,error:""}
+  const onHandleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setState({ ...state, [name]: value });
   };
-  const onHandleManagerName = (e) => {
-    setState({ ...state, managerName: e.target.value });
-  };
-  const onHandleContactNumber = (e) => {
-    setState({ ...state, contactNumber: e.target.value });
-  };
-  const onHandleBuildingName = (e) => {
-    setState({ ...state, buildingName: e.target.value });
-  };
-  const onHandleArea = (e) => {
-    setState({ ...state, area: e.target.value });
-  };
-  const onHandleStreetNo = (e) => {
-    setState({ ...state, streetNo: e.target.value });
-  };
-  const onHandleCity = (e) => {
-    setState({ ...state, city: e.target.value });
-  };
-  const onHandleState = (e) => {
-    setState({ ...state, state: e.target.value });
-  };
-  const onHandleCountry = (e) => {
-    setState({ ...state, country: e.target.value });
-  };
-  const onHandlePincode = (e) => {
-    setState({ ...state, pincode: e.target.value });
-  };
+ 
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    setState({ ...state, add: add });
+    setState({ ...state});
   };
   return (
     <div>
       <h2>Add Restaurant</h2>
       <form onSubmit={onHandleSubmit}>
         <label>RestaurantName</label>
-        <input type="text" onChange={onHandleRestaurantName} />
+        <input type="text" name="restaurantName" onChange={onHandleChange} />
         <br />
         <label>ManagerName</label>
-        <input type="text" onChange={onHandleManagerName} />
+        <input type="text" name="managerName" onChange={onHandleChange} />
         <br />
         <label>ContactNumber</label>
-        <input type="text" onChange={onHandleContactNumber} />
+        <input type="text" name="contactNumber" onChange={onHandleChange} />
         <br />
         <label>BuildingName</label>
-        <input type="text" onChange={onHandleBuildingName} />
+        <input type="text" name="buildingName" onChange={onHandleChange} />
         <br />
         <label>Area</label>
-        <input type="text" onChange={onHandleArea} />
+        <input type="text" name="area" onChange={onHandleChange} />
         <br />
         <label>StreetNo</label>
-        <input type="text" onChange={onHandleStreetNo} />
+        <input type="text" name="streetNo" onChange={onHandleChange} />
         <br />
         <label>City</label>
-        <input type="text" onChange={onHandleCity} />
+        <input type="text" name="city" onChange={onHandleChange} />
         <br />
         <label>State</label>
-        <input type="text" onChange={onHandleState} />
+        <input type="text" name="state" onChange={onHandleChange} />
         <br />
         <label>Country</label>
-        <input type="text" onChange={onHandleCountry} />
+        <input type="text" name="country" onChange={onHandleChange} />
         <br />
         <label>Pincode</label>
-        <input type="text" onChange={onHandlePincode} />
+        <input type="text" name="pincode" onChange={onHandleChange} />
         <br />
         <button>Submit</button>
         <br />
       </form>
-      RestaurantName:- {state.restaurantName}
-      <br />
-      ManagerName:- {state.managerName}
-      <br />
-      ContactNumber:- {state.contactNumber}
-      <br />
-      BuildingName:- {state.buildingName}
-      <br />
-      Area:- {state.area}
-      <br />
-      StreetNo:- {state.streetNo}
-      <br />
-      City:- {state.city}
-      <br />
-      State:- {state.state}
-      <br />
-      Country:- {state.country}
-      <br />
-      Pincode:- {state.pincode}
+      {
+       response.restaurant?
+       (<DisplayRestaurant restaurant={response.restaurant}/>):""
+      }
+      {
+        response.error ? response.error :""
+      }
     </div>
   );
 };

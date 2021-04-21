@@ -1,13 +1,12 @@
-import AddRestaurant from "../Components/Restaurant/AddRestaurant";
-import DeleteRestaurant from "../Components/Restaurant/DeleteRestaurant";
-import UpdateRestaurant from "../Components/Restaurant/UpdateRestaurant";
+import AddRestaurant from "../components/restaurant/AddRestaurant";
+import ViewRestaurantById from "../components/restaurant/ViewRestaurantById";
 
 const RestaurantPage = () => {
     return ( 
         <div>
             {/* {<AddRestaurant/>} */}
-            {<UpdateRestaurant/>}
-            {/* {<DeleteRestaurant/>} */}
+            {/* {<UpdateRestaurant/>} */}
+            <ViewRestaurantById/>
         </div>
      );
 }

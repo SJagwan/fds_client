@@ -9,7 +9,7 @@ const AddCategory = () => {
 
     const [state,setState]=useState({id:"", category : undefined})
 
-    const onHandleName=(e)=>{
+    const onHandleId=(e)=>{
         setState({...state,id:e.target.value})
     }
 
@@ -22,11 +22,11 @@ const AddCategory = () => {
         <div>
             <h2>Add Category</h2>
             <form onSubmit={onHandleSubmit}>
-                <label>Name</label>
-                <input type="text" onChange={onHandleName}/>
+                <label>Id</label>
+                <input type="text" onChange={onHandleId}/>
                 <button>Submit</button>
             </form>
-            Name - {state.name}
+            Id - {state.id}
 
         </div>
         

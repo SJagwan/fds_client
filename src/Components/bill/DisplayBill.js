@@ -3,9 +3,11 @@ const DisplayBill = ({bill}) => {
         <div>
               <h2>Displaying Bill</h2>
               
-              
+              <p>{bill.billId}</p>
+              <p>{bill.orderStatus}</p>
+              <p>{bill.totalItem}</p>
         </div>
      );
 }
  
-export default DisplayRestaurant;
+export default DisplayBill;

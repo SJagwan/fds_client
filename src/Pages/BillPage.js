@@ -1,11 +1,14 @@
-import AddBill from "../Components/Bill/AddBill";
+
+import ViewBillByDate from "../Components/Bill/ViewBillByDate";
+import ViewBillById from "../Components/Bill/ViewBillById";
 
 const BillPage = () => {
     return ( 
         <div>
-            {
-                <AddBill/>
-            }
+            
+                {/* <ViewBillById/> */}
+                <ViewBillByDate/>
+            
         </div>
      );
 }

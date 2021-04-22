@@ -1,45 +1,67 @@
 import { useState } from "react";
+import DisplayCategory from "./DisplayCategory";
 
 const UpdateCategory = () => {
+  const category = {
+    id: "1",
+    name: "UpdateCategory",
+  };
 
-    const category={
-       id : "1",
-        name:"UpdateCategory"
-    }
+  const categoryList = [
+    { id: 1, name: "SJ" },
+    { id: 2, name: "Hardik" },
+    { id: 3, name: "O4ASJ" },
+  ];
 
-    const [state,setState]=useState({name:"", id : "" , category : undefined})
+  const [state, setState] = useState({ name: "", id: ""});
 
-    const onHandleName=(e)=>{
-        setState({...state,name:e.target.value})
-    }
+  const response = { category : undefined, error : "error occurred"}
 
-    const onHandleId=(e)=>{
-        setState({...state,id:e.target.value})
-    }
+  const onHandleName = (e) => {
+    setState({ ...state, name: e.target.value });
+  };
 
-    const onHandleSubmit=(e)=>{
-        e.preventDefault();
-        setState({...state,category:category})
-    }
+  const onHandleId = (e) => {
+    setState({ ...state, id: e.target.value });
+  };
 
-    return ( 
-        <div>
-            <h2>Update Category</h2>
-            <form onSubmit={onHandleSubmit}>
-                <label>Id</label>
-                <input type="number" onChange={onHandleId}/>
-                <label>Name</label>
-                <input type="text" onChange={onHandleName}/>
-                <button>Submit</button>
-            </form>
-            
-            Id   - {state.id}<br/>
-            Name - {state.name}
+  const onHandleSubmit = (e) => {
+    e.preventDefault();
+    setState({ ...state, category: category });
+  };
 
+  return (
+    <div className="container">
+      <h2>Update Category</h2>
+      <form onSubmit={onHandleSubmit}>
+      <div className="form-group">
+        <label>Id</label>
+        <select id="categoryId" className = "form-control" onChange={onHandleId}>
+          <option disabled selected>
+            select id
+          </option>
+          {categoryList.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
         </div>
-        
+        <div className="form-group">
+        <label>Name</label>
+        <input type="text" className = "form-control" onChange={onHandleName} />
+        </div>
+        <button>Submit</button>
+      </form>
+      {response.category ? (
+        <DisplayCategory category={response.category} />
+      ) : (
+        ""
+      )}
 
-     );
-}
- 
+      {response.error ? response.error : ""}
+    </div>
+  );
+};
+
 export default UpdateCategory;

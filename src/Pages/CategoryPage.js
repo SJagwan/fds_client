@@ -1,6 +1,7 @@
-import AddCategory from "../Components/Category/AddCategory";
-import UpdateCategory from "../Components/Category/UpdateCategory";
-import ViewCategory from "../Components/Category/ViewCategory";
+import AddCategory from "../components/category/AddCategory";
+import UpdateCategory from "../components/category/UpdateCategory";
+import ViewAllCategory from "../components/category/ViewAllCategory";
+import ViewCategory from "../components/category/ViewCategory";
 
 const CategoryPage = () => {
     return ( 
@@ -8,6 +9,7 @@ const CategoryPage = () => {
            {<AddCategory/>}
            {/* {<UpdateCategory/>} */}
            {/* {<ViewCategory/>} */}
+           {/* {<ViewAllCategory/>} */}
         </div>
      );
 }

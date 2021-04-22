@@ -4,7 +4,7 @@ import Nav from './components/Nav'
 
 import { Form, Button } from 'react-bootstrap'
 import RestaurantPage from './pages/RestaurantPage';
-import { addRestaurantResquest,viewRestaurantById } from './services/restaurantService';
+import { addRestaurantResquest,viewRestaurantById,viewRestaurantByLocation } from './services/restaurantService';
 
 class App extends React.Component {
   render() {
@@ -30,9 +30,21 @@ class App extends React.Component {
     //   console.log(error.message);
     //   console.log(error.response.data);
     // })
-    const restaurantId="7926413861"
+    
+    // const restaurantId="7926413861"
 
-    const promise=viewRestaurantById(restaurantId);
+    // const promise=viewRestaurantById(restaurantId);
+    // promise.then((response)=>{
+    //   console.log(response.data);
+
+    // }).catch((error)=>{
+    //   console.log(error.message);
+    //   console.log(error.response.data);
+    // })
+
+    const pincode="201005"
+
+    const promise=viewRestaurantByLocation(pincode);
     promise.then((response)=>{
       console.log(response.data);
 

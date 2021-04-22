@@ -1,24 +1,19 @@
-import AddItem from "../Components/Item/AddItem"
-import AddItemToRestaurant from "../Components/Item/AddItemToRestaurant"
-import RemoveItem from "../Components/Item/RemoveItem"
-import UpdateItem from "../Components/Item/UpdateItem"
-import ViewItem from "../Components/Item/ViewItem"
-import ViewItembyCategory from "../Components/Item/ViewItembyCategory"
-import ViewItembyName from "../Components/Item/ViewItembyName"
-import ViewItembyRestaurant from "../Components/Item/ViewItembyRestaurant"
+import AddItem from "../components/item/AddItem"
+import AddItemToRestaurant from "../components/item/AddItemToRestaurant"
+import ViewItem from "../components/item/ViewItem"
+import ViewItembyCategory from "../components/item/ViewItembyCategory"
+import ViewItembyName from "../components/item/ViewItembyName"
 
 
 const ItemPage = () => {
     return (  
         <div>
-        <AddItem/> 
-        {/* <AddItemToRestaurant/> */}
-        {/* <UpdateItem/> */}
-        {/* <RemoveItem/> */}
-      {/* <ViewItem/> */}
-       {/* <ViewItembyName/> */}
-       {/* <ViewItembyCategory/> */}
-       {/* <ViewItembyRestaurant/> */}
+        {/* <AddItem/>  */}
+         {/* <AddItemToRestaurant/>  */}
+        {/* <ViewItem/> */}
+        {/* <ViewItembyCategory/> */}
+         {/* <ViewItembyName/> */}
+   
         </div>
     );
 }

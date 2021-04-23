@@ -9,7 +9,7 @@ export const addRestaurantStart=()=>({
 export const addRestaurantSuccess=()=>({
     typr:addRestaurantConstant.Fetch_Add_Restaurant_Success,
     payload:data,
-    error;undefined,
+    error:undefined,
 })
 
 export const addRestaurantFailure=()=>({

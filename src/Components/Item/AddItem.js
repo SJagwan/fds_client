@@ -8,6 +8,7 @@ const AddItem = () => {
     quantity: "",
     restaurantId: "",
     catId: "",
+    validations: { itemName: undefined ,cost:undefined},
   });
  
   const itemmock = {
@@ -32,12 +33,36 @@ const AddItem = () => {
   const onHandleChange = (event) => { 
     const name = event.target.name;
     const value = event.target.value;
-    setState({ ...state, [name]: value });
+    let validationMsg
+    if(name==="itemName"){
+      validationMsg=validateItemName(value)
+    }
+    if (name==="cost"){
+      validationMsg=validateCost(value)
+    }
+    const newValidations = { ...state.validations, [name]: validationMsg };
+    setState({ ...state, [name]: value , validations: newValidations});
   };
   const onSubmit = (event) => {
     event.preventDefault();
+    if (state.validations.itemName ) {
+      return;
+    }
     setState({ ...state });
   };
+  const validateItemName =(name)=>{
+    if (name.length<3){
+    return "Item Name can not be Smaller than 3 Letters"
+  }
+return undefined;
+}
+const validateCost =(cost)=>{
+  if(cost<0){
+    return "Cost can not be Negative"
+  }
+  return undefined
+}
+
   return (
     <div className="container">
       <form onSubmit={onSubmit}>
@@ -46,23 +71,37 @@ const AddItem = () => {
         <div className="form-group" >
           <label> Item Name</label>
           <input type="text" className="form-control" name="itemName" onChange={onHandleChange} />
+          {state.validations.itemName ? (
+            <div>
+              {state.validations.itemName}
+            </div>
+          ) : (
+            ""
+          )}
         </div>
 
         <div className="form-group">
         <label> Cost</label>
-        <input type="text" name="cost"  className="form-control" onChange={onHandleChange} />
+        <input type="number" name="cost"  className="form-control" onChange={onHandleChange} />
+        {state.validations.cost ? (
+            <div>
+              {state.validations.cost}
+            </div>
+          ) : (
+            ""
+          )}
         </div>
 
         <div className="form-group">
         <label> Quantity</label>
-        <input type="number" className="form-control" name="quantity" onChange={onHandleChange} />
+        <input type="number" className="form-control" name="quantity" onChange={onHandleChange} min="0"/>
         </div>
         
         <div className="form-group">
         <label> Resturant Id</label>
         <select name="restaurantId"  className="form-control" onChange={onHandleChange}>
           <option disabled selected>
-            Select Restaurant Id
+            Select Restaurant 
           </option>
           {restaurantList.map((restaurant) => (
             <option key={restaurant.restaurantId} value={restaurant.restaurantId}>

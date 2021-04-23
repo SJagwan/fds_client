@@ -27,7 +27,7 @@ const ViewItembyName = () => {
        
       <div className="form-group" >
         <label> Item Name</label>
-        <input type="text"  name ="itemName" className="form-control" onChange={onHandleChange}/>
+        <input type="text"  name ="itemName" className="form-control" onChange={onHandleChange} minLength="2"/>
       </div>
 
       <button>Submit</button>

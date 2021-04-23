@@ -15,5 +15,5 @@ export const addRestaurantSuccess=()=>({
 export const addRestaurantFailure=()=>({
     type:addRestaurantConstant.Fetch_Add_Restaurant_Failure,
     payload:undefined,
-    error:undefined
+    error:error
 })

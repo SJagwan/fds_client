@@ -5,8 +5,8 @@ import ViewCustomerDetail from "../components/customer/ViewCustomerDetail";
 const CustomerPage = () => {
     return ( 
         <div>
-            {/*{<AddCustomerDetail>}*/}
-            {/*{<UpdateCustomerDetail>}*/}
+            {<AddCustomerDetail/>}
+            {<UpdateCustomerDetail/>}
             {<ViewCustomerDetail/>}
         </div>
      );

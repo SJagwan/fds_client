@@ -7,7 +7,15 @@ const UpdateCustomerDetail = () => {
         firstName:"Vijay",
         lastName:"san",
         id:"07",
-        age:"21"
+        age:"21",
+        mobileNumber:"9874651230",
+      email:"vijay07@gmail",
+        buildingName:"Jothi flats",
+       area:"ashok nagar",
+       streetNo:"raj street",
+       city:"Chennai",
+       state:"TamilNadu",
+       country:"India"
     }
     const [state,setState]=useState({firstName:"", lastName:"",age:"",mobileNumber:"",email:"",buildingName:"",area:"",gender:"",pincode:""})
     const response={CustomerDetail:customer, error:""}

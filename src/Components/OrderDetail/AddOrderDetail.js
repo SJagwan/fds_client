@@ -1,22 +1,24 @@
 import { useState } from "react";
-import { addOrderRequest } from "../../Services/OrderDetailService";
+import { addOrderRequest } from "../../services/orderDetailService";
+import DisplayOrderDetail from "./DisplayOrderDetail";
 
 const AddOrderDetail = () => {
   const customerList = [
-    { id: 1, name: "SJ" },
-    { id: "1859309095", name: "Hardik" },
-    { id: 3, name: "O4ASJ" },
+    { id: "3624803138", name: "SJ" },
+    { id: "9443084071", name: "Hardik" },
+    { id: "2054398488", name: "O4ASJ" },
   ];
   const order = {
-    name: "SJ",
-    customer: "12",
+    orderId: "SJ",
+    customerId: "12",
+    name:"Picka",
+    status:"delivered",
+    item:[{name:"cake"},{name:"choco"}]
   };
 
-  const [state, setState] = useState({
-    customerId: "",
-    error:"",
-    orderDetail: undefined,
-  });
+  const [state, setState] = useState({ customerId: ""});
+
+  const response ={orderDetail:undefined,error:"error found"}
 
   const onHandleChange = (e) => {
     const { name, value } = e.target;
@@ -24,15 +26,16 @@ const AddOrderDetail = () => {
   };
   const onHandleSubmit = (e) => {
     e.preventDefault();
+    setState({ ...state});
     
-    const promise=addOrderRequest(state.customerId);
-    promise.then(response=>{
-      // console.log(response.data)
-      setState({ ...state, orderDetail: response.data });
-    }).catch(error=>{
-      console.log("inside error",error.response.data)
-      setState({ ...state, error: error.message });
-    })
+    // const promise=addOrderRequest(state.customerId);
+    // promise.then(response=>{
+    //   console.log(response.data)
+    //   // setState({ ...state, orderDetail: response.data });
+    // }).catch(error=>{
+    //   console.log("inside error",error.response.data)
+    //   // setState({ ...state, error: error.message });
+    // })
   };
 
   return (
@@ -51,11 +54,18 @@ const AddOrderDetail = () => {
         </select>
         <button type="submit">Submit</button>
       </form>
-      CustomerId:- {state.customerId}
-      <br />
-      {console.log(state.orderDetail)}
+
+      {
+        response.orderDetail ? 
+        (<DisplayOrderDetail order={response.orderDetail}/>) : ""
+      }
+      {
+        response.error ? response.error :""
+      }
+
     </div>
   );
 };
 
 export default AddOrderDetail;
+

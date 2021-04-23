@@ -1,55 +1,75 @@
 import { useState } from "react";
+import DisplayListOrderDetail from "./DisplayListOrderDetail";
 const ViewOrderDetailByCustomer = () => {
-  const customerList = [
-    { id: 1, name: "SJ" },
-    { id: 2, name: "Hardik" },
-    { id: 3, name: "O4ASJ" },
-  ];
+  // const customerList = [
+  //   { customerId: 1, firstName: "SJ" },
+  //   { customerId: 2, firstName: "Hardik" },
+  //   { customerId: 3, firstName: "O4ASJ" },
+  // ];
   const order = [
     {
-      name: "SJ",
-      customer: "12",
+    orderId:"1",
+	  customerId:"2",
+	  firstName:"Shubhanshu",
+	  orderStatus:"delievered",
+	  orderDate:'20/21',
+	  itemName:["cake","pizza"]
     },
     {
-        name:"O4ASJ",
-        customer:"2"
+    orderId:"3",
+	  customerId:"4",
+	  firstName:"\Hardik",
+	  orderStatus:"delievered",
+	  orderDate:'1/4/21',
+	  itemName:["pizza","lays"]
     },
   ];
 
-  const [state, setState] = useState({
-    customerId: "",
-    orderDetail: [],
-  });
+  // const [state, setState] = useState({
+  //   customerId: ""
+  // });
 
-  const onHandleChange = (e) => {
-    const { name, value } = e.target;
-    setState({ ...state, [name]: value });
-  };
-  const onHandleSubmit = (e) => {
-    e.preventDefault();
-    setState({ ...state, orderDetail: order });
-  };
+  const response={orderDetailList:undefined,error:""}
+
+  // const onHandleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setState({ ...state, [name]: value });
+  // };
+  // const onHandleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setState({ ...state});
+  // };
   return (
-    <div>
+    <div className="container">
       <h2>View Order Detail By Customer Name</h2>
-      <form onSubmit={onHandleSubmit}>
+      {/* <form onSubmit={onHandleSubmit}>
+        <div className="form-group">
         <label>Customer Id</label>
-        <select name="customerId" onChange={onHandleChange}>
+        <select className="form-control" name="customerId" onChange={onHandleChange}>
           <option disabled selected>
-            select order
+            select CustormerID
           </option>
-          {customerList.map((order) => (
-            <option key={order.id} value={order.id}>
-              {order.name}
+          {customerList.map((customer) => (
+            <option key={customer.customerId} value={customer.customerId}>
+              {customer.firstName}
             </option>
           ))}
         </select>
-        <button type="submit">Submit</button>
-      </form>
-      <br />
-      Id:- {state.customerId}
-      <br />
-      {console.log(state.orderDetail)}
+        </div>
+        
+        <button className="btn btn-primary" type="submit">Submit</button>
+      </form> */}
+
+      {
+        response.orderDetailList ? 
+        <DisplayListOrderDetail orderList={response.orderDetailList}/> : ""
+      }
+      {
+        response.error ? response.error :""
+      }
+
+
+
     </div>
   );
 };

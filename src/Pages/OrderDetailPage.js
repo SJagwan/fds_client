@@ -1,15 +1,14 @@
-import AddOrderDetail from "../Components/OrderDetail/AddOrderDetail"
-import DeleteOrderDetail from "../Components/OrderDetail/DeleteOrderDetail"
-import UpdateOrderDetail from "../Components/OrderDetail/UpdateOrderDetail"
-import ViewOrderDetail from "../Components/OrderDetail/ViewOrderDetail"
-import ViewOrderDetailByCustomer from "../Components/OrderDetail/ViewOrderDetailByCustomer"
+import AddOrderDetail from "../components/orderDetail/AddOrderDetail"
+import UpdateOrderDetail from "../components/orderDetail/UpdateOrderDetail"
+import ViewOrderDetail from "../components/orderDetail/ViewOrderDetail"
+import ViewOrderDetailByCustomer from "../components/orderDetail/ViewOrderDetailByCustomer"
 
 const OrderDetailPage = () => {
     return ( 
         <div>
-            <AddOrderDetail/> 
+            {/* <AddOrderDetail/>  */}
             {/* <UpdateOrderDetail/>  */}
-            {/* <DeleteOrderDetail/> */}
+           
             {/* <ViewOrderDetail/> */}
             {/* <ViewOrderDetailByCustomer/> */}
         </div>

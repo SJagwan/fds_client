@@ -23,12 +23,11 @@ export function viewItemRequest(id){
     const promise=axios.get(url);
     return promise;
 }
-export function viewItembyCategoryRequest(data){
+export function viewItembyCategoryRequest(id){
     console.log("-------- Inside viewItembyCategoryRequest --------")
-    const url = baseUrl+("/items/bycategory")
-    
-    const promise=axios.get(url,data);
-    return promise;
+   const url = baseUrl+(`/items/bycategory/${id}`)
+   const promise=axios.get(url);
+    return promise; 
 }
 export function viewItembyNameRequest(name){
     console.log("-------- Inside viewItembyNameRequest--------")

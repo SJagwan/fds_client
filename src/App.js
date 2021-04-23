@@ -9,10 +9,10 @@ class App extends React.Component {
   render() {
     // const data = {
     //   itemName: "cake",
-    //   catId: "9886363934",
+    //   catId: "7764976569",
     //   quantity: "12",
     //   cost: "500",
-    //   restaurantId: "1493539340",
+    //   restaurantId: "3017562341",
     // };
     // const promise = addItemRequest(data);
     // promise
@@ -43,10 +43,8 @@ class App extends React.Component {
     //   console.log(error.response.data)
     // })
 
-    // const data = {
-    //   catId:"9886363934"
-    // };
-    // const promise = viewItembyCategoryRequest(data)
+    // const catId="6096426597"
+    // const promise = viewItembyCategoryRequest(catId)
     // promise.then((response)=>{
     //   console.log(response.data);
     // }).catch((error)=>{
@@ -56,8 +54,8 @@ class App extends React.Component {
 
 
     //  const data = {
-    //   itemId: "3461190522",
-    //   restaurantId: "1493539340",
+    //   itemId: "2489296786",
+    //   restaurantId: "3017562341",
     // };
     // const promise = addItemToRestaurantRequest(data);
     // promise

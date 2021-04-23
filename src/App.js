@@ -30,6 +30,15 @@ class App extends React.Component {
       console.log(error.response.data);
     })
 
+    const promise=updateCustomerRequest(data);
+    promise.then((response)=>{
+      console.log(response.data);
+
+    }).catch((error)=>{
+      console.log(error.message);
+      console.log(error.response.data);
+    })
+
     const id="7926413861"
 
     const promise=viewCustomerById(id);

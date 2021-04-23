@@ -12,7 +12,7 @@ export function updateCustomerRequest(data){
     console.log("-----------Inside Update Customer Request----------")
 
     const url=baseUrl+"/customers/update";
-    const promise=axios.post(url,data);
+    const promise=axios.put(url,data);
     return promise;
 }
 export function viewCustomerById(id){

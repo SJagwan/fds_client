@@ -20,16 +20,18 @@ class App extends React.Component {
     //   console.log(error.message);
     //   console.log(error.response.data);
     // })
-    const billDate="23/4/2021"
+    // const data={
+    //   startDate:"20/4/2021",
+    //   endDate:"23/4/2021"
+    // }
+    // const promise=ViewBillByDate(data);
+    // promise.then((response)=>{
+    //   console.log(response.data);
 
-    const promise=ViewBillByDate(billDate);
-    promise.then((response)=>{
-      console.log(response.data);
-
-    }).catch((error)=>{
-      console.log(error.message);
-      console.log(error.response.data);
-    })
+    // }).catch((error)=>{
+    //   console.log(error.message);
+    //   console.log(error.response.data);
+    // })
 
     return (
       <div>

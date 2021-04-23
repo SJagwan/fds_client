@@ -10,7 +10,8 @@ const ViewBillByDate = () => {
 
       };
     const [state, setState] = useState({
-        billId: ""
+        startDate: "",
+        endDate:""
     
       });
       
@@ -28,10 +29,12 @@ const ViewBillByDate = () => {
 
     return (  
         <div>
-           <h2>Add ViewBillByDate</h2>
+           <h2> View Bill By Date</h2>
       <form onSubmit={onHandleSubmit}>
-        <label>BillDate</label>
-        <input type="date" name="billDate" onChange={onHandleChange} />
+        <label>StartDate</label>
+        <input type="date" name="startDate" onChange={onHandleChange} />
+        <label>EndDate</label>
+        <input type="date" name="endDate" onChange={onHandleChange} />
         <button>Submit</button>
       </form>
       {

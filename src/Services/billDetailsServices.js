@@ -8,9 +8,9 @@ export function viewBillById(billId){
     const promise=axios.get(url);
     return promise;
 }
-export function ViewBillByDate(billDate){
-    console.log("-----------Inside View Bill By Date Request----------")
-    const url=baseUrl+`/bills/get/${billId}`;
-    const promise=axios.get(url);
-    return promise;
+ export function ViewBillByDate(data){
+     console.log("-----------Inside View Bill By Date Request----------")
+     const url=baseUrl+`/bills/getByDate`;
+     const promise=axios.get(url,data);
+     return promise;
 }

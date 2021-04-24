@@ -5,7 +5,11 @@ const ViewBillById = () => {
     const bill = {
        billId:"123456",
        orderStatus:"Approved",
-       totalItem:"5"
+       totalItem:5,
+       totalCost :10,
+       billDate:"24/03/2021",
+       
+
 
 
       };

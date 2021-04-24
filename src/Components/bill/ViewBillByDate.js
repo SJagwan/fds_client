@@ -2,13 +2,22 @@ import { useState } from "react";
 import DisplayBillList from "./DisplayBillList";
 
 const ViewBillByDate = () => {
-    const billList = {
-       billId:"123456",
-       orderStatus:"Approved",
-       totalItem:"5",
-       billDate:"23/4/2021"
-
-      };
+    const billList = [
+      {
+        billId:"123456",
+        orderStatus:"Approved",
+        totalItem:5,
+        totalCost :10,
+        billDate:"24/03/2021",
+      },
+      {
+        billId:"123457",
+        orderStatus:"Approved",
+        totalItem:6,
+        totalCost :11,
+        billDate:"24/03/2021",
+      }
+    ]
     const [state, setState] = useState({
         startDate: "",
         endDate:""

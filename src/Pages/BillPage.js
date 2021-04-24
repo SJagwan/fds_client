@@ -1,6 +1,6 @@
 
-import ViewBillByDate from "../Components/Bill/ViewBillByDate";
-import ViewBillById from "../Components/Bill/ViewBillById";
+import ViewBillByDate from "../components/bill/ViewBillByDate";
+import ViewBillById from "../components/bill/ViewBillById";
 
 const BillPage = () => {
     return ( 

@@ -8,18 +8,18 @@ import { addRestaurantResquest,viewRestaurantById,viewRestaurantByLocation } fro
 
 class App extends React.Component {
   render() {
-    const data={
-      restaurantName: "Chawla",
-      managerName: "Mayank",
-      contactNumber: "9999955555",
-      buildingName: "RedQuarter",
-      area: "Lajpat Nagar",
-      streetNo: "5",
-      city: "Ghaziabad",
-      state: "Uttar Pradesh",
-      country: "India",
-      pincode: "201005"
-    }
+    // const data={
+    //   restaurantName: "Chawla",
+    //   managerName: "Mayank",
+    //   contactNumber: "9999955555",
+    //   buildingName: "RedQuarter",
+    //   area: "Lajpat Nagar",
+    //   streetNo: "5",
+    //   city: "Ghaziabad",
+    //   state: "Uttar Pradesh",
+    //   country: "India",
+    //   pincode: "201005"
+    // }
 
    
     // const promise=addRestaurantResquest(data);
@@ -42,16 +42,16 @@ class App extends React.Component {
     //   console.log(error.response.data);
     // })
 
-    const pincode="201005"
+    // const pincode="201005"
 
-    const promise=viewRestaurantByLocation(pincode);
-    promise.then((response)=>{
-      console.log(response.data);
+    // const promise=viewRestaurantByLocation(pincode);
+    // promise.then((response)=>{
+    //   console.log(response.data);
 
-    }).catch((error)=>{
-      console.log(error.message);
-      console.log(error.response.data);
-    })
+    // }).catch((error)=>{
+    //   console.log(error.message);
+    //   console.log(error.response.data);
+    // })
 
 
 

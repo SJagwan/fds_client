@@ -4,44 +4,44 @@ const ViewByLocationRestaurant = () => {
   const [state, setState] = useState({
     pincode: "",
   });
-  const restaurantList=[
-      {
-        restaurantId:"001",
-        restaurantName: "Chawla",
-        managerName: "Mayank",
-        contactNumber: "9999955555",
-        buildingName: "RedQuarter",
-        area: "Lajpat Nagar",
-        streetNo: "5",
-        city: "Ghaziabad",
-        state: "Uttar Pradesh",
-        country: "India",
-        pincode: "201005"
-      },
-      {
-        restaurantId:"002",
-        restaurantName: "McD",
-        managerName: "Tyagi",
-        contactNumber: "9999944444",
-        buildingName: "tower",
-        area: "delhi",
-        streetNo: "2",
-        city: "delhi",
-        state: "delhi",
-        country: "India",
-        pincode: "211005",
-      }
-  ]
-  const response={restaurant:undefined,error:"hello"}
+  const restaurantList = [
+    {
+      restaurantId: "001",
+      restaurantName: "Chawla",
+      managerName: "Mayank",
+      contactNumber: "9999955555",
+    },
+    {
+      restaurantId: "002",
+      restaurantName: "McD",
+      managerName: "Tyagi",
+      contactNumber: "9999944444",
+    },
+  ];
+  const response = { restaurant: undefined, error: "hello" };
   const onHandleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setState({ ...state, [name]: value });
+    let validationMsg;
+    if(name==="pincode"){
+      validationMsg= validateRestaurantPincode(value);
+    }
+    const newValidations = { ...state.validations, [name]: validationMsg };
+    setState({ ...state, [name]: value,validations: newValidations });
   };
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
+    if (state.validations.pincode) {
+      return;
+    }
     setState({ ...state });
+  };
+  const validateRestaurantPincode = (pincode) => {
+    if (pincode.length != 6) {
+      return "length of pincode should be 6 digit";
+    }
+    return undefined;
   };
   return (
     <div>
@@ -49,12 +49,20 @@ const ViewByLocationRestaurant = () => {
       <form onSubmit={onHandleSubmit}>
         <label>Pincode</label>
         <input type="text" name="pincode" onChange={onHandleChange} />
+        {state.validations.pincode ? (
+            <div>
+              {state.validations.pincode}
+            </div>
+          ) : (
+            ""
+          )}
         <button>Submit</button>
       </form>
-      {
-          response.restaurant?
-          (<DisplayRestaurantList restaurantList={response.restaurant}/> ):""
-      }
+      {response.restaurant ? (
+        <DisplayRestaurantList restaurantList={response.restaurant} />
+      ) : (
+        ""
+      )}
       {response.error ? response.error : ""}
     </div>
   );

@@ -3,16 +3,10 @@ import DisplayRestaurant from "./DisplayRestaurant";
 
 const ViewRestaurantById = () => {
   const restaurant = {
+    restaurantId:"001",
     restaurantName: "Chawla",
     managerName: "Mayank",
-    contactNumber: "9999955555",
-    buildingName: "RedQuarter",
-    area: "Lajpat Nagar",
-    streetNo: "5",
-    city: "Ghaziabad",
-    state: "Uttar Pradesh",
-    country: "India",
-    pincode: "201005",
+    contactNumber: "9999955555"
   };
   const [state, setState] = useState({
     restaurantId: ""

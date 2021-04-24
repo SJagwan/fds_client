@@ -1,7 +1,17 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { viewBillByIdThunk } from "../../redux/bill/viewBillById/viewBillByIdAction";
 import DisplayBill from "./DisplayBill";
 
 const ViewBillById = () => {
+    const dispatch=useDispatch();
+    const response=useSelector((state)=>{
+        return {
+            bill:state.viewBillById.bill,
+            error:state.viewBillById.error
+        }
+    })
+
     const bill = {
        billId:"123456",
        orderStatus:"Approved",
@@ -18,11 +28,10 @@ const ViewBillById = () => {
     
       });
       const billList = [
-        { billId: "3624803138" },
+        { billId: 3624803138 },
         { billId: "9443084071" },
         { billId: "2054398488" },
       ];
-      const response ={bill:undefined,error:""}
       const onHandleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -31,7 +40,8 @@ const ViewBillById = () => {
      
       const onHandleSubmit = (e) => {
         e.preventDefault();
-        setState({ ...state});
+        dispatch(viewBillByIdThunk(state))
+        
       };
 
     return (  

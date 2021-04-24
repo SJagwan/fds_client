@@ -1,29 +1,30 @@
 import { viewBillByIdConstant } from "./viewBillByIdConstant"
 
 const initial_State = {
-    bill=undefined,
+    bill:undefined,
     error:undefined
 
 }
 export const viewBillByIdReducer=(state=initial_State,action)=>{
     switch(action.type){
-        case  viewBillByIdConstant.Fetch_View_Bill_Start:
+        case  viewBillByIdConstant.Start:
             return {
                 ...state,
             };
-        case viewBillByIdConstant.Fetch_View_Bill_Success:
+        case viewBillByIdConstant.Success:
             return{
                     ...state,
                     bill: action.payload,
+                    error: action.error
                 };
-        case viewBillByIdConstant.Fetch_View_Bill_Failure:
+        case viewBillByIdConstant.Failure:
             return{
                     ...state,
-                        error: payload.error,
+                        error: action.error,
+                        bill: action.payload
                     };
             default:
-            return{
-                    ...state,
-                        };
+            return state
+                        
     }
 }

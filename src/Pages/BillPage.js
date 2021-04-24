@@ -6,8 +6,8 @@ const BillPage = () => {
     return ( 
         <div>
             
-                {/* <ViewBillById/> */}
-                <ViewBillByDate/>
+                <ViewBillById/> 
+                {/* <ViewBillByDate/> */}
             
         </div>
      );

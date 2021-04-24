@@ -5,7 +5,7 @@ const DisplayCustomerDetails = ({customer}) => {
             <p>{customer.id}</p>
             <p>{customer.firstName}</p>
             <p>{customer.lastName}</p>
-            <p>{customer.age}</p>
+            <p>{customer.gender}</p>
         </div>
      );
 }

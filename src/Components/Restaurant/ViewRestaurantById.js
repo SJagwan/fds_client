@@ -32,8 +32,9 @@ const ViewRestaurantById = () => {
     <div>
       <h2>View By Restaurant Id</h2>
       <form onSubmit={onHandleSubmit}>
+        <div className="form-group">
         <label>Restaurant By Id</label>
-        <select name="restaurantId" onChange={onHandleChange}>
+        <select name="restaurantId" onChange={onHandleChange} className="form-control">
           <option disabled selected>
             select restaurantId
           </option>
@@ -43,7 +44,8 @@ const ViewRestaurantById = () => {
             </option>
           ))}
         </select>
-        <button>Submit</button>
+        </div>
+        <button className="btn btn-primary">Submit</button>
         <br />
       </form>
       {

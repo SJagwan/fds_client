@@ -1,13 +1,16 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addRestaurantThunk } from "../../redux/restaurant/addRestaurant/addRestaurantAction";
 import DisplayRestaurant from "./DisplayRestaurant";
 
 const AddRestaurant = () => {
-  const restaurantMock = {
-    restaurantId: "001",
-    restaurantName: "Chawla",
-    managerName: "Mayank",
-    contactNumber: "9999955555",
-  };
+  const dispatch=useDispatch();
+  const response=useSelector((state)=>{
+    return{
+      restaurant:state.addRestaurant.restaurant,
+      error:state.addRestaurant.error
+    }
+  })
   const [state, setState] = useState({
     restaurantName: "",
     managerName: "",
@@ -21,7 +24,6 @@ const AddRestaurant = () => {
     pincode: "",
     validations: { pincode: undefined, restaurantName: undefined },
   });
-  const response = { restaurant: undefined, error: "" };
   const onHandleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -38,10 +40,11 @@ const AddRestaurant = () => {
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
+    dispatch(addRestaurantThunk(state))
     if (state.validations.restaurantName || state.validations.pincode) {
       return;
     }
-    setState({ ...state });
+    
   };
   const validateRestaurantName = (name) => {
     if (name.length < 5) {
@@ -56,7 +59,7 @@ const AddRestaurant = () => {
     return undefined;
   };
   return (
-    <div>
+    <div className="container">
       <h2>Add Restaurant</h2>
       <form onSubmit={onHandleSubmit}>
         <div className="form-group">
@@ -163,7 +166,7 @@ const AddRestaurant = () => {
             ""
           )}
         </div>
-        <button>Submit</button>
+        <button className="btn btn-primary">Submit</button>
         <br />
       </form>
       {response.restaurant ? (

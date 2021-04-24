@@ -5,9 +5,9 @@ import ViewRestaurantById from "../components/restaurant/ViewRestaurantById";
 const RestaurantPage = () => {
     return ( 
         <div>
-            {/* {<AddRestaurant/>} */}
+            {<AddRestaurant/>}
             {/* <ViewRestaurantById/> */}
-            {<ViewByLocationRestaurant/>}
+            {/* {<ViewByLocationRestaurant/>} */}
         </div>
      );
 }

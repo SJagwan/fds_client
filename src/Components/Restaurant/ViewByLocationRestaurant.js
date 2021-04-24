@@ -3,6 +3,7 @@ import DisplayRestaurantList from "./DisplayRestaurantList";
 const ViewByLocationRestaurant = () => {
   const [state, setState] = useState({
     pincode: "",
+    validations: { pincode: undefined },
   });
   const restaurantList = [
     {
@@ -18,7 +19,7 @@ const ViewByLocationRestaurant = () => {
       contactNumber: "9999944444",
     },
   ];
-  const response = { restaurant: undefined, error: "hello" };
+  const response = { restaurant: undefined, error: "" };
   const onHandleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -45,7 +46,7 @@ const ViewByLocationRestaurant = () => {
   };
   return (
     <div>
-      <h2>Add Restaurant</h2>
+      <h2>View Restaurant By Location</h2>
       <form onSubmit={onHandleSubmit}>
         <label>Pincode</label>
         <input type="text" name="pincode" onChange={onHandleChange} />
@@ -56,7 +57,7 @@ const ViewByLocationRestaurant = () => {
           ) : (
             ""
           )}
-        <button>Submit</button>
+        <button className="btn btn-primary">Submit</button>
       </form>
       {response.restaurant ? (
         <DisplayRestaurantList restaurantList={response.restaurant} />

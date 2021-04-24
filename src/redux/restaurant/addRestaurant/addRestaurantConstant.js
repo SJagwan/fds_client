@@ -1,5 +1,5 @@
 export const addRestaurantConstant={
-  Fetch_Add_Restaurant_Start:"Fetch_Add_Restaurant_Start",
-  Fetch_Add_Restaurant_Success:"Fetch_Add_Restaurant_Success",
-  Fetch_Add_Restaurant_Failure:"Fetch_Add_Restaurant_Failure"
+  Start:"Fetch_Add_Restaurant_Start",
+  Success:"Fetch_Add_Restaurant_Success",
+  Failure:"Fetch_Add_Restaurant_Failure"
 }

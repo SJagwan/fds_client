@@ -3,7 +3,7 @@ import './App.css';
 import Nav from './components/Nav'
 import FoodCartPage from './pages/FoodCartPage';
 import OrderDetailPage from './pages/OrderDetailPage';
-import { increaseQuantityRequest,reduceQuantity } from './services/foodCartService';
+import { increaseQuantityRequest,reduceQuantityRequest } from './services/foodCartService';
 import { addOrderRequest, updateOrderRequest, viewOrderByCustomerId, viewOrderById} from './services/orderDetailService';
 
 class App extends React.Component {
@@ -75,6 +75,9 @@ class App extends React.Component {
     //   console.log(error.message);
     //   console.log(error.response.data);
     // })
+
+    // -----------------------------------------------
+
 
 
 

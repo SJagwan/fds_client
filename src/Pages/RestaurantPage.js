@@ -6,8 +6,8 @@ const RestaurantPage = () => {
     return ( 
         <div>
             {<AddRestaurant/>}
-            {/* <ViewRestaurantById/> */}
-            {/* {<ViewByLocationRestaurant/>} */}
+            <ViewRestaurantById/>
+            {<ViewByLocationRestaurant/>}
         </div>
      );
 }

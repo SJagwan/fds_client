@@ -1,23 +1,26 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { viewRestaurantByIdThunk } from "../../redux/restaurant/viewRestaurantById/viewRestaurantByIdAction";
 import DisplayRestaurant from "./DisplayRestaurant";
 
 const ViewRestaurantById = () => {
-  const restaurant = {
-    restaurantId:"001",
-    restaurantName: "Chawla",
-    managerName: "Mayank",
-    contactNumber: "9999955555"
-  };
+  const dispatch=useDispatch();
+  const response=useSelector((state)=>{
+    return{
+      restaurant:state.viewRestaurantById.restaurant,
+      error:state.viewRestaurantById.error
+    }
+  })
+  
   const [state, setState] = useState({
     restaurantId: ""
 
   });
   const RestaurantList = [
-    { id: "3624803138", name: "SJ" },
+    { id: "9170007147", name: "Taj" },
     { id: "9443084071", name: "Hardik" },
     { id: "2054398488", name: "O4ASJ" },
   ];
-  const response ={restaurant:undefined,error:""}
   const onHandleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -26,7 +29,7 @@ const ViewRestaurantById = () => {
  
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    setState({ ...state});
+    dispatch(viewRestaurantByIdThunk(state))
   };
   return (
     <div>

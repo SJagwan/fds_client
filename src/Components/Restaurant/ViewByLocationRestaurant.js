@@ -1,25 +1,20 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { viewRestaurantByLocationThunk } from "../../redux/restaurant/viewRestaurantByLocation/viewRestaurantByLocationAction";
 import DisplayRestaurantList from "./DisplayRestaurantList";
 const ViewByLocationRestaurant = () => {
+  const dispatch=useDispatch();
+  const response=useSelector((state)=>{
+    return{
+      restaurant:state.viewRestaurantByLocation.restaurant,
+      error:state.viewRestaurantByLocation.error
+    }
+  })
   const [state, setState] = useState({
     pincode: "",
     validations: { pincode: undefined },
   });
-  const restaurantList = [
-    {
-      restaurantId: "001",
-      restaurantName: "Chawla",
-      managerName: "Mayank",
-      contactNumber: "9999955555",
-    },
-    {
-      restaurantId: "002",
-      restaurantName: "McD",
-      managerName: "Tyagi",
-      contactNumber: "9999944444",
-    },
-  ];
-  const response = { restaurant: undefined, error: "" };
+  
   const onHandleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -33,6 +28,7 @@ const ViewByLocationRestaurant = () => {
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
+    dispatch(viewRestaurantByLocationThunk(state))
     if (state.validations.pincode) {
       return;
     }

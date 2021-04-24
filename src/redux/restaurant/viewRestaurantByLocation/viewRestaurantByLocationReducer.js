@@ -1,23 +1,23 @@
-import { viewRestaurantByIdConstant } from "./viewRestaurantByIdComponent";
+import { viewRestaurantByLocationConstant } from "./viewRestaurantByLocationComponent";
 
 const initial_State = {
     restaurant: undefined,
     error: undefined,
   };
   
-  export const viewRestaurantByIdReducer = (state = initial_State, action) => {
+  export const viewRestaurantByLocationReducer = (state = initial_State, action) => {
     switch (action.type) {
-      case viewRestaurantByIdConstant.Start:
+      case viewRestaurantByLocationConstant.Start:
         return {
           ...state,
         };
-      case viewRestaurantByIdConstant.Success:
+      case viewRestaurantByLocationConstant.Success:
         return {
           ...state,
           restaurant: action.payload,
           error: action.error,
         };
-      case viewRestaurantByIdConstant.Failure:
+      case viewRestaurantByLocationConstant.Failure:
         return {
           ...state,
           restaurant: action.payload,

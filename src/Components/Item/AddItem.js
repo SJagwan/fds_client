@@ -1,7 +1,17 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemThunk } from "../../redux/item/addItem/addItemAction";
 import DisplayItemDetail from "./DisplayItemDetail";
 
 const AddItem = () => {
+  const dispatch=useDispatch();
+  const response = useSelector((state)=>{
+    return{
+     item:state.addItem.item,
+     error:state.addItem.error
+    }
+  })
+
   const [state, setState] = useState({
     itemName: "",
     cost: "",
@@ -11,21 +21,13 @@ const AddItem = () => {
     validations: { itemName: undefined ,cost:undefined},
   });
  
-  const itemmock = {
-    itemName: "Cake",
-    cost: "100",
-    quantity: "2",
-    restaurantId: "Dominos",
-    catId: "Bakery",
-  };
-   const response = { item: undefined, error: "" };
    const restaurantList = [
-    { restaurantId: 1, restaurantName: "PIZZAHUT" },
+    { restaurantId: "0951797564", restaurantName: "PIZZAHUT" },
     { restaurantId: 2, restaurantName: "Dominos" },
     { restaurantId: 3, restaurantName: "BurgerKing" },
   ];
   const categoryList = [
-    { catId: 1, name: "" },
+    { catId: "6096426597", name: " 1" },
     { catId: 2, name: "Hardik" },
     { catId: 3, name: "Food" },
   ];
@@ -45,10 +47,11 @@ const AddItem = () => {
   };
   const onSubmit = (event) => {
     event.preventDefault();
+    dispatch(addItemThunk(state))
     if (state.validations.itemName ) {
       return;
     }
-    setState({ ...state });
+   
   };
   const validateItemName =(name)=>{
     if (name.length<3){
@@ -126,7 +129,7 @@ const validateCost =(cost)=>{
         </div>
 
         <div className="form-group" >
-        <button className="form-control"> Submit</button>
+        <button type="submit" className="btn btn-primary"> Submit</button>
         </div>
       </form>
       {response.item ? <DisplayItemDetail item={response.item} /> : ""}

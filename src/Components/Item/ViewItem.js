@@ -51,7 +51,7 @@ const ViewItem = () => {
           </select>
         </div>
 
-        <button>Submit</button>
+        <button  type="submit" className="btn btn-primary">Submit</button>
       </form>
       {response.item ? <DisplayItemDetail item={response.item} /> : ""}
       {response.error ? response.error : ""}

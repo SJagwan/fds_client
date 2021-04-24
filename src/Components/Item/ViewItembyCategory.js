@@ -43,7 +43,7 @@ const ViewItembyCategory = () => {
           ))}
         </select>
         </div>
-        <button>Submit</button>
+        <button  type="submit" className="btn btn-primary">Submit</button>
     </form>
   
     {

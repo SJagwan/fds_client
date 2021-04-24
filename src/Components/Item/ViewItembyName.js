@@ -30,7 +30,7 @@ const ViewItembyName = () => {
         <input type="text"  name ="itemName" className="form-control" onChange={onHandleChange} minLength="2"/>
       </div>
 
-      <button>Submit</button>
+      <button  type="submit" className="btn btn-primary">Submit</button>
     </form>
     {
         response.itemlist ? <DisplayListItemDetail itemList={response.itemlist}/> : ""

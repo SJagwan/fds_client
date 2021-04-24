@@ -1,28 +1,28 @@
 import { addItemConstant } from "./addItemConstant";
 
-initial_State = {
+const initial_State = {
   item: undefined,
   error: undefined,
 };
 export const addItemReducer = (state = initial_State, action) => {
   switch (action.type) {
-    case addItemConstant.Fetch_add_Item_Start:
+    case addItemConstant.Start:
       return {
         ...state,
       };
-    case addItemConstant.Fetch_add_Item_Success:
+    case addItemConstant.Success:
       return {
         ...state,
         item: action.payload,
+        error:action.error
       };
-    case addItemConstant.Fetch_add_Item_Failure:
+    case addItemConstant.Failure:
       return {
         ...state,
-        error: payload.error,
+        item: action.payload,
+        error: action.error,
       };
     default:
-      return {
-        ...state,
-      };
+      return state;
   }
 };

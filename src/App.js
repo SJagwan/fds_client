@@ -1,47 +1,27 @@
 import React from 'react';
 import './App.css';
 import Nav from './components/Nav'
+
 import BillPage from './pages/BillPage'
-import { Form, Button } from 'react-bootstrap'
+import RestaurantPage from './pages/RestaurantPage';
+import FoodCartPage from './pages/FoodCartPage';
+import OrderDetailPage from './pages/OrderDetailPage';
+import ItemPage from "./pages/ItemPage";
 
 
 class App extends React.Component {
   render() {
-
-    // const billId="7926413861"
-
-    // const promise=viewBillById(billId);
-    // promise.then((response)=>{
-    //   console.log(response.data);
-
-    // }).catch((error)=>{
-    //   console.log(error.message);
-    //   console.log(error.response.data);
-    // })
-    
-    //   const startDate="2021-04-24"
-    //   const endDate="2021-04-24"
-  
-    // const promise=viewBillByDateRequest(startDate , endDate);
-    // promise.then((response)=>{
-    //   console.log(response.data);
-
-    // }).catch((error)=>{
-    //   console.log(error.message);
-    //   console.log(error.response.data);
-    // })
-
     return (
       <div>
         <Nav />
+        <RestaurantPage/>
+        <OrderDetailPage/>
+        <FoodCartPage/>
+        <ItemPage />
         <BillPage/>
-
       </div>
-
     );
-
   }
-
 }
 
 export default App;

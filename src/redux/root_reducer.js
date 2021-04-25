@@ -1,4 +1,10 @@
 import { combineReducers } from "redux";
+import { addItemReducer } from "./item/addItem/addItemReducer";
+import { addItemByRestaurantReducer } from "./item/addItemToRestaurant/addItemToRestaurantReducer";
+import { viewItemReducer } from "./item/viewItem/viewItemReducer";
+import { viewItemByCategoryReducer } from "./item/viewItemByCategory/viewItemByCategoryReducer";
+import { viewItemByNameReducer } from "./item/viewItemByName/viewItemByNameReducer";
+
 
 import { addRestaurantReducer } from "./restaurant/addRestaurant/addRestaurantReducer";
 import { viewRestaurantByIdReducer } from "./restaurant/viewRestaurantById/viewRestaurantByIdReducer";
@@ -19,6 +25,12 @@ import {viewOrderReducer} from "./orderDetail/viewOrderDetail/viewOrderReducer";
     addOrder:addOrderReducer,
     addRestaurant:addRestaurantReducer,
     viewRestaurantById:viewRestaurantByIdReducer,
-    viewRestaurantByLocation:viewRestaurantByLocationReducer
+    viewRestaurantByLocation:viewRestaurantByLocationReducer,
+    addItem:addItemReducer,
+    addItemByRestaurant:addItemByRestaurantReducer,
+    viewItem:viewItemReducer,
+    viewItemByCategory:viewItemByCategoryReducer,
+    viewItemByName:viewItemByNameReducer
+
 
 })

@@ -1,5 +1,10 @@
 import { combineReducers } from "redux";
 
+import { addCategoryReducer } from "./category/addCategory/addCategoryReducer";
+import { updateCategoryReducer } from "./category/updateCategory/updateCategoryReducer";
+import { viewAllCategoryReducer } from "./category/viewAllCategory/viewAllCategoryReducer";
+import { viewCategoryReducer } from "./category/viewCategory/viewCategoryReducer";
+
 import { addCustomerReducer } from "./customer/addCustomer/addCustomerReducer";
 import { updateCustomerReducer } from "./customer/updateCustomer/updateCustomerReducer";
 import { viewCustomerReducer } from "./customer/viewCustomer/viewCustomerReducer";
@@ -38,7 +43,10 @@ import {viewOrderReducer} from "./orderDetail/viewOrderDetail/viewOrderReducer";
     viewItemByName:viewItemByNameReducer,
     addCustomer: addCustomerReducer,
     updateCustomer: updateCustomerReducer,
-    viewCustomer: viewCustomerReducer
-
+    viewCustomer: viewCustomerReducer,
+    addCategory : addCategoryReducer,
+    updateCategory : updateCategoryReducer,
+    viewCategory : viewCategoryReducer,
+    viewAllCategory : viewAllCategoryReducer
 
 })

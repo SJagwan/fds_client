@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Nav from './components/Nav'
 
+import CategoryPage from './pages/CategoryPage';
+
 import CustomerPage from './pages/CustomerPage';
 
 
@@ -24,6 +26,8 @@ class App extends React.Component {
         <FoodCartPage/>
         <ItemPage />
         <BillPage/>
+       <CategoryPage/>
+
 
       </div>
     );

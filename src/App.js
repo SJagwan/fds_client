@@ -1,15 +1,17 @@
 import React from 'react';
 import './App.css';
-import Nav from './Components/Nav'
+import Nav from './components/Nav'
+import FoodCartPage from './pages/FoodCartPage';
+import OrderDetailPage from './pages/OrderDetailPage';
 
-import { Form, Button } from 'react-bootstrap'
 
 class App extends React.Component {
   render() {
     return (
       <div>
         <Nav />
-
+        <OrderDetailPage/>
+        <FoodCartPage/>
       </div>
 
     );

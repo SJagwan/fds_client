@@ -1,22 +1,26 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateOrderThunk } from "../../redux/orderDetail/updateOrderDetail/updateOrderAction";
 import DisplayOrderDetail from "./DisplayOrderDetail";
 
 const UpdateOrderDetail = () => {
+
+  const dispatch=useDispatch();
+
+  const response=useSelector((state)=>{
+    return{
+      order:state.updateOrder.orderDetail,
+      error:state.updateOrder.error
+    }
+  })
+
   const orderList = [{ orderId: 1 }, { orderId: 2 }, { orderId: 3 }];
-  const order = {
-    orderId: "1",
-    customerId: "2",
-    firstName: "Shubhanshu",
-    orderStatus: "delievered",
-    orderDate: "20/21",
-    itemName: ["cake", "pizza"],
-  };
+
   const [state, setState] = useState({
     status: "",
     orderId: ""
   });
 
-  const response = { orderDetail: undefined, error: "" };
 
   const onHandleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +28,7 @@ const UpdateOrderDetail = () => {
   };
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    setState({ ...state });
+    dispatch(updateOrderThunk(state));
   };
   return (
     <div className="container">
@@ -56,8 +60,8 @@ const UpdateOrderDetail = () => {
         </div>
         <button className="btn btn-primary" type="submit">Submit</button>
       </form>
-      {response.orderDetail ? (
-        <DisplayOrderDetail order={response.orderDetail} />
+      {response.order ? (
+        <DisplayOrderDetail order={response.order} />
       ) : (
         ""
       )}

@@ -1,75 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { viewOrderByCustomerThunk } from "../../redux/orderDetail/viewOrderByCustomer/viewOrderByCustomerAction";
 import DisplayListOrderDetail from "./DisplayListOrderDetail";
 const ViewOrderDetailByCustomer = () => {
-  // const customerList = [
-  //   { customerId: 1, firstName: "SJ" },
-  //   { customerId: 2, firstName: "Hardik" },
-  //   { customerId: 3, firstName: "O4ASJ" },
-  // ];
-  const order = [
-    {
-    orderId:"1",
-	  customerId:"2",
-	  firstName:"Shubhanshu",
-	  orderStatus:"delievered",
-	  orderDate:'20/21',
-	  itemName:["cake","pizza"]
-    },
-    {
-    orderId:"3",
-	  customerId:"4",
-	  firstName:"\Hardik",
-	  orderStatus:"delievered",
-	  orderDate:'1/4/21',
-	  itemName:["pizza","lays"]
-    },
-  ];
+  const dispatch=useDispatch();
 
-  // const [state, setState] = useState({
-  //   customerId: ""
-  // });
+  const response=useSelector((state)=>{
+    return{
+      orderList:state.viewOrderByCustomer.orderDetails,
+      error:state.viewOrderByCustomer.error
+    }
+  })
 
-  const response={orderDetailList:undefined,error:""}
+  const fetchAllOrderByCustomerId=()=>{
+    const customerId="3180122623";
+    dispatch(viewOrderByCustomerThunk(customerId))
+  }
 
-  // const onHandleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setState({ ...state, [name]: value });
-  // };
-  // const onHandleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setState({ ...state});
-  // };
+  useEffect(fetchAllOrderByCustomerId,[]);
+
   return (
     <div className="container">
       <h2>View Order Detail By Customer Name</h2>
-      {/* <form onSubmit={onHandleSubmit}>
-        <div className="form-group">
-        <label>Customer Id</label>
-        <select className="form-control" name="customerId" onChange={onHandleChange}>
-          <option disabled selected>
-            select CustormerID
-          </option>
-          {customerList.map((customer) => (
-            <option key={customer.customerId} value={customer.customerId}>
-              {customer.firstName}
-            </option>
-          ))}
-        </select>
-        </div>
-        
-        <button className="btn btn-primary" type="submit">Submit</button>
-      </form> */}
-
-      {
-        response.orderDetailList ? 
-        <DisplayListOrderDetail orderList={response.orderDetailList}/> : ""
-      }
-      {
-        response.error ? response.error :""
-      }
-
-
-
+      {response.orderList ? (
+        <DisplayListOrderDetail orderList={response.orderList} />
+      ) : (
+        ""
+      )}
+      {response.error ? response.error : ""}
     </div>
   );
 };

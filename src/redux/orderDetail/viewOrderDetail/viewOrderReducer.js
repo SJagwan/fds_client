@@ -1,23 +1,24 @@
-import { updateOrderConstant } from "./updateOrderConstant";
+import { viewOrderConstant } from "./viewOrderConstant";
+
 
 const initial_State = {
   orderDetail: undefined,
   error: undefined,
 };
 
-export const updateOrderReducer = (state = initial_State, action) => {
+export const viewOrderReducer = (state = initial_State, action) => {
   switch (action.type) {
-    case updateOrderConstant.Start:
+    case viewOrderConstant.Start:
       return {
         ...state,
       };
-    case updateOrderConstant.Success:
+    case viewOrderConstant.Success:
       return {
         ...state,
         orderDetail: action.payload,
         error: action.error,
       };
-    case updateOrderConstant.Failure:
+    case viewOrderConstant.Failure:
       return {
         ...state,
         orderDetail: action.payload,

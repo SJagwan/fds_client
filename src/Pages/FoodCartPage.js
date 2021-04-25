@@ -1,13 +1,11 @@
-import AddItemToCart from "../components/foodCart/AddItemToCart"
-import IncreaseQuantity from "../components/foodCart/IncreaseQuantity"
-import ReduceQuantity from "../components/foodCart/ReduceQuantity"
+import AddItemToCart from "../components/foodCart/AddItemToCart";
+import AddOrRemoveItemFromCart from "../components/foodCart/AddOrRemoveItemFromCart"
 
 const FoodCartPage = () => {
     return ( 
         <div>
             <AddItemToCart/>
-            {/* <IncreaseQuantity/> */}
-            {/* <ReduceQuantity/> */}
+            <AddOrRemoveItemFromCart/>
         </div>
      );
 }

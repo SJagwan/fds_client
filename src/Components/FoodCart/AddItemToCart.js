@@ -1,51 +1,57 @@
-import { useState } from "react";
-import { addItemToCartRequest } from "../../services/foodCartService";
-import "./addReplace.css";
+import { useDispatch, useSelector } from "react-redux";
+import { itemToCartIncreaseThunk } from "../../redux/foodCart/itemToCart/itemToCartAction";
+import './itemToCart.css'
 const AddItemToCart = () => {
+
+    const dispatch=useDispatch();
+
+    const response=useSelector((state)=>{
+        return{
+            itemDetail:state.itemToCart.itemDetail,
+            error:state.itemToCart.error
+        }
+    })
+
+
+
   const itemList = [
-    { itemId: 1, itemName: "Chocolate", quantity: 1 },
-    { itemId: 2, itemName: "pizza", quantity: 10 },
-    { itemId: 3, itemName: "colddrink", quantity: 1 },
+    { itemId: "0820997584", itemName: "Chocolate", cost: 1 },
+    { itemId: "2277354043", itemName: "pizza", cost: 10 },
+    { itemId: "7385067487", itemName: "colddrink", cost: 1 },
   ];
-  const cart = {
-    name: "SJ",
-    item: {
-      item: 1,
-      cost: 6,
-    },
-  };
-  const [state, setState] = useState({
-    itemId: "",
-    select: false,
-  });
 
-  const response = { order: undefined, error: "" };
+  const onHandleAdd=(itemId)=>{
+      const data={
+        itemId:itemId,
+        customerId:"3180122623",
+        quantity:1
+      }
+      dispatch(itemToCartIncreaseThunk(data))
 
-  const onHandleChange = (e) => {
-    const { name, value, checked } = e.target;
-    console.log(value, checked);
-    setState({ ...state, [name]: value, select: checked });
-  };
-  const onHandleSubmit = (e) => {
-    e.preventDefault();
-    setState({ ...state });
-  };
+  }
+
   return (
-    <div className="container">
-      <h2 className="heading">Add Item To Cart</h2>
-    
-        {itemList.map((item) => (
-          <div key={item.itemId} className="cartItem">
-            <h5>{item.itemName}</h5>
-            <div className="symbol">-</div>
-            <span className="value">{item.quantity}</span>
-            <div className="symbol">+</div>
+    <div className="cartItem">
+      <h2 className="title">Add Item To Cart</h2>
+      <div className="heading">
+        <h5>Name</h5>
+        <div className="">
+          <h5>Cost</h5>
+          <h6>ClickToAdd &#8595;</h6>
+        </div>
+      </div>
+      {itemList.map((item) => (
+        <div key={item.itemId} className="item">
+          <h6>{item.itemName}</h6>
+          <div>
+            <h6>&#8377; {item.cost}</h6>
+            <button type="submit" onClick={()=>onHandleAdd(item.itemId)} className="btn btn-primary">
+              AddToCart
+            </button>
           </div>
-        ))}
-
-        <button type="submit" className="btn btn-primary">
-          Create Order
-        </button>
+        </div>
+      ))}
+      <button className="btn btn-primary">Go To Cart</button>
     </div>
   );
 };

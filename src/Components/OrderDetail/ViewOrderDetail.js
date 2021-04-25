@@ -1,21 +1,21 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import DisplayOrderDetail from "./DisplayOrderDetail";
+import {viewOrderThunk} from '../../redux/orderDetail/viewOrderDetail/viewOrderAction'
 
 const ViewOrderDetail = () => {
+
+  const dispatch=useDispatch();
+  const response=useSelector((state)=>{
+    return{
+      order:state.viewOrder.orderDetail,
+      error:state.viewOrder.error
+    }
+  })
   const orderList = [{ orderId: 1 }, { orderId: 2 }, { orderId: 3 }];
-  const order = {
-    orderId: "1",
-    customerId: "2",
-    firstName: "Shubhanshu",
-    orderStatus: "delievered",
-    orderDate: "20/21",
-    itemName: ["cake", "pizza"],
-  };
   const [state, setState] = useState({
     orderId: "",
   });
-
-  const response = { orderDetail: undefined, error: "" };
 
   const onHandleChange = (e) => {
     const { name, value } = e.target;
@@ -23,7 +23,7 @@ const ViewOrderDetail = () => {
   };
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    setState({ ...state });
+    dispatch(viewOrderThunk(state))
   };
   return (
     <div className="container">
@@ -50,8 +50,8 @@ const ViewOrderDetail = () => {
           Submit
         </button>
       </form>
-      {response.orderDetail ? (
-        <DisplayOrderDetail order={response.orderDetail} />
+      {response.order ? (
+        <DisplayOrderDetail order={response.order} />
       ) : (
         ""
       )}

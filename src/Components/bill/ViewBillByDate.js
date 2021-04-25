@@ -1,30 +1,24 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { viewBillByDateThunk } from "../../redux/bill/viewBillByDate/viewBillByDateAction";
 import DisplayBillList from "./DisplayBillList";
 
 const ViewBillByDate = () => {
-    const billList = [
-      {
-        billId:"123456",
-        orderStatus:"Approved",
-        totalItem:5,
-        totalCost :10,
-        billDate:"24/03/2021",
-      },
-      {
-        billId:"123457",
-        orderStatus:"Approved",
-        totalItem:6,
-        totalCost :11,
-        billDate:"24/03/2021",
-      }
-    ]
+    const dispatch=useDispatch();
+    const response=useSelector((state)=>{
+        return {
+            bill:state.viewBillByDate.bill,
+            error:state.viewBillByDate.error
+        }
+    })
+
     const [state, setState] = useState({
         startDate: "",
         endDate:""
     
       });
       
-      const response ={bill:undefined,error:""}
+      
       const onHandleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -33,7 +27,7 @@ const ViewBillByDate = () => {
      
       const onHandleSubmit = (e) => {
         e.preventDefault();
-        setState({ ...state});
+        dispatch(viewBillByDateThunk(state))
       };
 
     return (  

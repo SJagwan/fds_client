@@ -15,7 +15,7 @@ export function updateCustomerRequest(data) {
   const promise = axios.put(url, data);
   return promise;
 }
-export function viewCustomerById(id) {
+export function viewCustomerRequest(id) {
   console.log("-----------Inside View Customer By Id Request----------");
   const url = baseUrl + `/customers/view/${id}`;
   const promise = axios.get(url);

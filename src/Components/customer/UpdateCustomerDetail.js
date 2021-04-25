@@ -1,16 +1,19 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCustomerThunk } from "../../redux/customer/updateCustomer/updateCustomerAction";
 import DisplayCustomerDetails from "./DisplayCustomerDetail";
 
 const UpdateCustomerDetail = () => {
 
-    const customer={
-        customerId:"007",
-        firstName:"Vijay",
-        lastName:"san",
-        gender:"male"
-    }
-    const [state,setState]=useState({firstName:"", lastName:"",age:""})
-    const response={customerDetail:customer, error:""}
+    const dispatch=useDispatch();
+    const response=useSelector((state)=>{
+      return{
+      customer:state.updateCustomer.customer,
+      error:state.updateCustomer.error
+      }
+    })
+
+    const [state,setState]=useState({firstName:"", lastName:"",age:""})    
 
     const onHandleChange=(e)=>{
         const name=e.target.name;
@@ -20,8 +23,8 @@ const UpdateCustomerDetail = () => {
     
     const onHandleSubmit=(e)=>{
         e.preventDefault();
-        setState({...state})
-
+        dispatch(updateCustomerThunk(state));
+       
     }
     return ( 
         <div className="container">
@@ -42,7 +45,7 @@ const UpdateCustomerDetail = () => {
                 <button>Submit</button>
             </form>
             {
-               response.customerDetail? (<DisplayCustomerDetails customer={response.customerDetail}/>) :""
+               response.customer? (<DisplayCustomerDetails customer={response.customer}/>) :""
            }
            {
                response.error? response.error:""

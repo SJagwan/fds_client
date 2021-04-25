@@ -1,25 +1,29 @@
+import { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { viewCustomerThunk } from "../../redux/customer/viewCustomer/viewCustomerAction";
 import DisplayCustomerDetails from "./DisplayCustomerDetail";
 
 const ViewCustomerDetail = () => {
 
-    const customer={
-      customerId:"007",
-      firstName:"Vijay",
-      lastName:"san",
-      gender:"male"
-    }
-      
-    const response={customerDetail:customer, error:""}
-    const onHandleSubmit=(e)=>{
-        e.preventDefault();
+    const dispatch=useDispatch();
+    const response=useSelector((state)=>{
+      return{
+      customer:state.viewCustomer.customer,
+      error:state.viewCustomer.error
+      }
+    })
+   const fetchCustomer=()=>{
+       const id="1355009585"
+       dispatch(viewCustomerThunk(id))
 
-    }
+    }    
+   useEffect (fetchCustomer,[])
     return ( 
         <div className="container">
             <h2>View Customer Request</h2>
             {
-               response.customerDetail? (<DisplayCustomerDetails customer={response.customerDetail}/>) :""
+               response.customer? (<DisplayCustomerDetails customer={response.customer}/>) :""
            }
            {
                response.error? response.error:""

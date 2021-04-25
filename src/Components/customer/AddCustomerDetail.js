@@ -1,13 +1,19 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addCustomerThunk } from "../../redux/customer/addCustomer/addCustomerAction";
 import DisplayCustomerDetails from "./DisplayCustomerDetail";
 
 const AddCustomerDetail = () => {
-  const customer = {
-    customerId: "007",
-    firstName: "Vijay",
-    lastName: "san",
-    gender: "male",
-  };
+
+  const dispatch=useDispatch();
+  const response=useSelector((state)=>{
+    return{
+    customer:state.addCustomer.customer,
+    error:state.addCustomer.error
+    }
+  })
+
+  
   const [state, setState] = useState({
     firstName: "",
     lastName: "",
@@ -20,7 +26,6 @@ const AddCustomerDetail = () => {
     pincode: "",
     validations: { firstName: undefined, age: undefined },
   });
-  const response = { customerDetail: customer, error: "" };
 
   const onHandleChange = (e) => {
     const name = e.target.name;
@@ -38,10 +43,10 @@ const AddCustomerDetail = () => {
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
+    dispatch(addCustomerThunk(state));
     if (state.validations.fistName || state.validations.age) {
         return;
       }
-    setState({ ...state });
   };
   const validateAge = (age) => {
     if (age <= 0) {
@@ -113,7 +118,7 @@ const AddCustomerDetail = () => {
         <div className="form-group">
           <label>email</label>
           <input
-            type="text"
+            type="email"
             className="form-control"
             name="email"
             onChange={onHandleChange}
@@ -156,11 +161,11 @@ const AddCustomerDetail = () => {
           />
         </div>
 
-        <button>Submit</button>
+        <button className="btn btn-primary">Submit</button>
       </form>
 
-      {response.customerDetail ? (
-        <DisplayCustomerDetails customer={response.customerDetail} />
+      {response.customer ? (
+        <DisplayCustomerDetails customer={response.customer} />
       ) : (
         ""
       )}

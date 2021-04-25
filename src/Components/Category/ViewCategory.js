@@ -1,20 +1,26 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { viewCategoryThunk } from "../../redux/category/viewCategory/viewCategoryAction";
 import DisplayCategory from "./DisplayCategory";
 
 const ViewCategory = () => {
-  const category = {
-    id: "1",
-    name: "ViewCategory",
-  };
+  const dispatch = useDispatch();
+  const response = useSelector((state)=>{
+      return{
+          category:state.viewCategory.category,
+          error:state.viewCategory.error
+      }
+  })
+  
 
   const categoryList = [
-    { id: 1, name: "SJ" },
-    { id: 2, name: "Hardik" },
-    { id: 3, name: "O4ASJ" },
+    { id: "7091097141", name: "chips" },
+    { id: "2", name: "Hardik" },
+    { id: "3", name: "O4ASJ" },
   ];
 
   const [state, setState] = useState({ id: ""});
-  const response = { category : undefined, error : "error occurred"}
+ 
 
   const onHandleId = (e) => {
     setState({ ...state, id: e.target.value });
@@ -22,7 +28,8 @@ const ViewCategory = () => {
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    setState({ ...state, category: category });
+    dispatch(viewCategoryThunk(state));
+   
   };
 
   return (
@@ -42,7 +49,7 @@ const ViewCategory = () => {
           ))}
         </select>
         </div>
-        <button>Submit</button>
+        <button className="btn btn-primary">Submit</button>
       </form>
       {response.category ? (
         <DisplayCategory category={response.category} />

@@ -20,8 +20,9 @@ export function updateCategoryRequest(data){
 
 }
 
-export function viewCategoryRequest(id){
+export function viewCategoryRequest(data){
     console.log("--------- Inside View Category Request ---------")
+    const id = data.id
     const url=baseUrl+`/category/view/${id}`;
     // const data={name:catName};
     const promise=axios.get(url);

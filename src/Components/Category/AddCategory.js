@@ -1,14 +1,20 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addCategoryThunk } from "../../redux/category/addCategory/addCategoryAction";
 import DisplayCategory from "./DisplayCategory";
 
 const AddCategory = () => {
-  const category = {
-    catId: "1",
-    name: "AddCategory",
-  };
+  const dispatch = useDispatch();
+  const response = useSelector((state)=>{
+      return{
+          category:state.addCategory.category,
+          error:state.addCategory.error
+      }
+  })
+  
 
   const [state, setState] = useState({ name: "" });
-  const response = { category: undefined, error: "error occurred" };
+
 
   const onHandleName = (e) => {
     setState({ ...state, name: e.target.value });
@@ -16,7 +22,7 @@ const AddCategory = () => {
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    setState({ ...state, category: category });
+    dispatch(addCategoryThunk(state));
   };
 
   return (
@@ -27,7 +33,7 @@ const AddCategory = () => {
           <label>Name</label>
           <input type="text" className="form-control" onChange={onHandleName} />
         </div>
-        <button>Submit</button>
+        <button className="btn btn-primary">Submit</button>
       </form>
 
       {response.category ? (

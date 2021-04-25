@@ -27,13 +27,7 @@ class App extends React.Component {
     //   id:"8963037228"
     // }
 
-    // const promise=updateCategoryRequest(data)
-    // promise.then((response)=>{
-    //   console.log(response.data);
-    // }).catch((error)=>{
-    //   console.log(error.message);
-    //   console.log(error.response.data);
-    // })
+    
 
     
     // const id=7637557279

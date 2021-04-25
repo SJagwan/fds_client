@@ -1,23 +1,23 @@
-import { addCategoryConstant } from "./addCategoryConstant";
+import { viewCategoryConstant } from "./viewCategoryConstant";
 
 const initial_State = {
   category: undefined,
   error: undefined,
 };
 
-export const addCategoryReducer = (state = initial_State, action) => {
+export const viewCategoryReducer = (state = initial_State, action) => {
   switch (action.type) {
-    case addCategoryConstant.Start:
+    case viewCategoryConstant.Start:
       return {
         ...state,
       };
-    case addCategoryConstant.Success:
+    case viewCategoryConstant.Success:
       return {
         ...state,
         category: action.payload,
-        error:action.error
+        error:action.error,
       };
-    case addCategoryConstant.Failure:
+    case viewCategoryConstant.Failure:
       return {
         ...state,
         category: action.payload,

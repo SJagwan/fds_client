@@ -1,4 +1,9 @@
 import { combineReducers } from "redux";
+
+import { addCustomerReducer } from "./customer/addCustomer/addCustomerReducer";
+import { updateCustomerReducer } from "./customer/updateCustomer/updateCustomerReducer";
+import { viewCustomerReducer } from "./customer/viewCustomer/viewCustomerReducer";
+
 import { addItemReducer } from "./item/addItem/addItemReducer";
 import { addItemByRestaurantReducer } from "./item/addItemToRestaurant/addItemToRestaurantReducer";
 import { viewItemReducer } from "./item/viewItem/viewItemReducer";
@@ -30,7 +35,10 @@ import {viewOrderReducer} from "./orderDetail/viewOrderDetail/viewOrderReducer";
     addItemByRestaurant:addItemByRestaurantReducer,
     viewItem:viewItemReducer,
     viewItemByCategory:viewItemByCategoryReducer,
-    viewItemByName:viewItemByNameReducer
+    viewItemByName:viewItemByNameReducer,
+    addCustomer: addCustomerReducer,
+    updateCustomer: updateCustomerReducer,
+    viewCustomer: viewCustomerReducer
 
 
 })

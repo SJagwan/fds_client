@@ -1,7 +1,16 @@
 import { useState } from "react";
 import DisplayListItemDetail from "./DisplayListItemDetail";
+import { useDispatch, useSelector } from "react-redux";
+import { viewItemByNameThunk } from "../../redux/item/viewItemByName/viewItemByNameAction";
 
 const ViewItembyName = () => {
+  const dispatch = useDispatch();
+  const response = useSelector((state) => {
+    return {
+      item: state.viewItemByName.item,
+      error: state.viewItemByName.error,
+    };
+  });
     const [state,setState]=useState({itemName:""})
     
     const itemlistmock =[
@@ -10,7 +19,7 @@ const ViewItembyName = () => {
         {itemName:"Cake",itemId:"asas",
         cost:"200",quantity:"1",restaurantId:"PizzaHut",catId:"Bakery"}
     ]
-    const response={itemlist:undefined,error:""}
+    //const response={itemlist:undefined,error:""}
     const onHandleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -18,7 +27,8 @@ const ViewItembyName = () => {
       }
       const onSubmit = (event) => {
         event.preventDefault();
-        setState({...state})
+        dispatch(viewItemByNameThunk(state));
+      // setState({...state})
       }
     return (  <div className="container">
          
@@ -33,7 +43,7 @@ const ViewItembyName = () => {
       <button  type="submit" className="btn btn-primary">Submit</button>
     </form>
     {
-        response.itemlist ? <DisplayListItemDetail itemList={response.itemlist}/> : ""
+        response.item ? <DisplayListItemDetail itemList={response.item}/> : ""
     }
     {
       response.error ? response.error : ""

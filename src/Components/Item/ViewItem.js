@@ -1,11 +1,20 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { viewItemThunk } from "../../redux/item/viewItem/viewItemAction";
 import DisplayItemDetail from "./DisplayItemDetail";
 
 const ViewItem = () => {
+  const dispatch=useDispatch();
+  const response = useSelector((state)=>{
+    return{
+     item:state.viewItem.item,
+     error:state.viewItem.error
+    }
+  })
   const [state, setState] = useState({ itemId: "" });
 
   const itemList = [
-    { itemId: 1, itemName: "Cake" },
+    { itemId: "5032837047", itemName: "Amul" },
     { itemId: 2, itemName: "Pizza" },
     { itemId: 3, itemName: "Noodles" },
   ];
@@ -17,7 +26,7 @@ const ViewItem = () => {
     restaurantId: "Dominos",
     catId: "Bakery",
   };
-  const response = { item: undefined, error: "" };
+ // const response = { item: undefined, error: "" };
   const onHandleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -26,7 +35,8 @@ const ViewItem = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setState({ ...state });
+    dispatch(viewItemThunk(state));
+    //setState({ ...state });
   };
   return (
     <div className="container">

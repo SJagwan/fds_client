@@ -16,21 +16,24 @@ export function addItemToRestaurantRequest(data){
     return promise;
 }
 
-export function viewItemRequest(id){
+export function viewItemRequest(data){
     console.log("-------- Inside viewItemRequest --------")
+    const id=data.itemId;
     const url = baseUrl+(`/items/view/${id}`)
    
     const promise=axios.get(url);
     return promise;
 }
-export function viewItembyCategoryRequest(id){
+export function viewItembyCategoryRequest(data){
     console.log("-------- Inside viewItembyCategoryRequest --------")
+    const id=data.catId;
    const url = baseUrl+(`/items/bycategory/${id}`)
    const promise=axios.get(url);
     return promise; 
 }
-export function viewItembyNameRequest(name){
+export function viewItembyNameRequest(data){
     console.log("-------- Inside viewItembyNameRequest--------")
+    const name=data.itemName;
     const url = baseUrl+(`/items/byname/${name}`)
     const promise=axios.get(url);
     return promise;

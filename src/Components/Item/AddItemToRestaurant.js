@@ -1,30 +1,33 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemToRestaurantThunk } from "../../redux/item/addItemToRestaurant/addItemToRestaurantAction";
 import DisplayItemDetail from "./DisplayItemDetail";
 
 const AddItemToRestaurant = () => {
+  const dispatch=useDispatch();
+  const response = useSelector((state)=>{
+    return{
+      restaurant:state.addItemByRestaurant.restaurant,
+     error:state.addItemByRestaurant.error
+    }
+  })
   const [state, setState] = useState({
     itemId: "",
     restaurantId: "",
   });
+  
   const restaurantList = [
-    { restaurantId: 1, restaurantName: "PIZZAHUT" },
+    { restaurantId: "9015238800", restaurantName: "PIZZAHUT" },
     { restaurantId: 2, restaurantName: "Dominos" },
     { restaurantId: 3, restaurantName: "BurgerKing" },
   ];
   const itemList = [
-    { itemId: 1, itemName: "Cake" },
-    { itemId: 2, itemName: "Pizza" },
+    { itemId:"6458641963", itemName: "Cake" },
+    { itemId: "1199438616", itemName: "Pizza" },
     { itemId: 3, itemName: "Nodlles" },
   ];
 
-  const itemmock = {
-    itemName: "Cake",
-    cost: "100",
-    quantity: "2",
-    restaurantId: "Dominos",
-    catId: "Bakery",
-  };
-  const response = { item: undefined, error: "" };
+ // const response = { item: undefined, error: "" };
   const onHandleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -32,21 +35,22 @@ const AddItemToRestaurant = () => {
   };
   const onSubmit = (event) => {
     event.preventDefault();
-    setState({ ...state });
+    dispatch(addItemToRestaurantThunk(state))
+   // setState({ ...state });
   };
   return (
     <div className="container">
       <form onSubmit={onSubmit}>
         <h1>Add Item To Restaurant</h1>
         <div className="form-group">
-          <label> Resturant Id</label>
+          <label> Resturant </label>
           <select
             name="restaurantId"
             className="form-control"
             onChange={onHandleChange}
           >
             <option disabled selected>
-              Select Restaurant Id
+              Select Restaurant 
             </option>
             {restaurantList.map((restaurant) => (
               <option
@@ -60,14 +64,14 @@ const AddItemToRestaurant = () => {
         </div>
 
         <div className="form-group">
-          <label> Item Id</label>
+          <label> Item </label>
           <select
             name="itemId"
             className="form-control"
             onChange={onHandleChange}
           >
             <option disabled selected>
-              Select Item Id
+              Select Item 
             </option>
             {itemList.map((item) => (
               <option key={item.itemId} value={item.itemId}>
@@ -78,7 +82,9 @@ const AddItemToRestaurant = () => {
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
-      {response.item ? <DisplayItemDetail item={response.item} /> : ""}
+      {/* {response.item ? <DisplayItemDetail item={response.item} /> : ""}
+      {response.error ? response.error : ""} */}
+    {response.restaurant ? <p>Item Added Successfully in Restaurant = {response.restaurant.restaurantName}</p>: ""}
       {response.error ? response.error : ""}
     </div>
   );

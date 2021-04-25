@@ -1,18 +1,29 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { viewItemByCategoryThunk } from "../../redux/item/viewItemByCategory/viewItemByCategoryAction";
 import DisplayListItemDetail from "./DisplayListItemDetail";
 
 const ViewItembyCategory = () => {
+  const dispatch=useDispatch();
+  const response = useSelector((state)=>{
+    return{
+     item:state.viewItemByCategory.item,
+     error:state.viewItemByCategory.error
+    }
+  })
     const [state,setState]=useState({catId:""})
-    const itemlistmock =[
-        {itemName:"Cake",itemId:"aaf",
-        cost:"100",quantity:"2",restaurantId:"Dominos",catId:"Bakery"},
-        {itemName:"Pizza",itemId:"abc",
-        cost:"200",quantity:"1",restaurantId:"PizzaHut",catId:"Bakery"}
-    ]
-    const response={itemlist:undefined,error:""}
+
+    // const itemlistmock =[
+    //     {itemName:"Cake",itemId:"aaf",
+    //     cost:"100",quantity:"2",restaurantId:"Dominos",catId:"Bakery"},
+    //     {itemName:"Pizza",itemId:"abc",
+    //     cost:"200",quantity:"1",restaurantId:"PizzaHut",catId:"Bakery"}
+    // ]
+
+   // const response={itemlist:undefined,error:""}
     const categoryList = [
-      { catId: 1, name: "SJP" },
-      { catId: 2, name: "Hardik" },
+      { catId: "6096426597", name: "SJP" },
+      { catId: "7857171300", name: "Hardik" },
       { catId: 3, name: "Food" },
     ];
     const onHandleChange = (event) => {
@@ -22,7 +33,8 @@ const ViewItembyCategory = () => {
       }
       const onSubmit = (event) => {
         event.preventDefault();
-        setState({...state})
+        dispatch(viewItemByCategoryThunk(state));
+       // setState({...state})
       }
     return (  
         <div className="container">
@@ -47,7 +59,7 @@ const ViewItembyCategory = () => {
     </form>
   
     {
-        response.itemlist ? <DisplayListItemDetail itemList={response.itemlist}/> : ""
+        response.item ? <DisplayListItemDetail itemList={response.item}/> : ""
     }
     {
       response.error ? response.error : ""

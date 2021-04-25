@@ -8,8 +8,8 @@ import ViewItembyName from "../components/item/ViewItembyName"
 const ItemPage = () => {
     return (  
         <div>
-        <AddItem/> 
-         {/* <AddItemToRestaurant/>  */}
+        {/* <AddItem/>  */}
+         <AddItemToRestaurant/> 
         {/* <ViewItem/> */}
         {/* <ViewItembyCategory/> */}
          {/* <ViewItembyName/> */}

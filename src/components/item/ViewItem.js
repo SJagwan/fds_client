@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { viewAllItemThunk } from "../../redux/item/viewAllItem/viewAllItemAction";
 import { viewItemThunk } from "../../redux/item/viewItem/viewItemAction";
 import DisplayItemDetail from "./DisplayItemDetail";
 
@@ -8,16 +9,18 @@ const ViewItem = () => {
   const response = useSelector((state) => {
     return {
       item: state.viewItem.item,
+      itemList:state.viewAllItem.items,
       error: state.viewItem.error,
     };
   });
   const [state, setState] = useState({ itemId: "" });
+ 
+  const fetchAll=()=>
+  {
+    dispatch(viewAllItemThunk())
+  }
+  useEffect(fetchAll,[])
 
-  const itemList = [
-    { itemId: "5032837047", itemName: "Amul" },
-    { itemId: 2, itemName: "Pizza" },
-    { itemId: 3, itemName: "Noodles" },
-  ];
 
   const onHandleChange = (event) => {
     const name = event.target.name;
@@ -44,7 +47,7 @@ const ViewItem = () => {
             <option disabled selected>
               Select Item Id
             </option>
-            {itemList.map((item) => (
+            {response.itemList.map((item) => (
               <option key={item.itemId} value={item.itemId}>
                 {item.itemName}
               </option>

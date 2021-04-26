@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToRestaurantThunk } from "../../redux/item/addItemToRestaurant/addItemToRestaurantAction";
+import { viewAllItemThunk } from "../../redux/item/viewAllItem/viewAllItemAction";
+import { viewAllRestaurantThunk } from "../../redux/restaurant/viewAllRestaurant/viewAllRestaurantAction";
 
 
 const AddItemToRestaurant = () => {
@@ -8,6 +10,8 @@ const AddItemToRestaurant = () => {
   const response = useSelector((state)=>{
     return{
       restaurant:state.addItemByRestaurant.restaurant,
+      restaurantList:state.viewAllRestaurant.restaurants,
+      itemList:state.viewAllItem.items,
      error:state.addItemByRestaurant.error
     }
   })
@@ -16,16 +20,11 @@ const AddItemToRestaurant = () => {
     restaurantId: "",
   });
   
-  const restaurantList = [
-    { restaurantId: "9015238800", restaurantName: "PIZZAHUT" },
-    { restaurantId: 2, restaurantName: "Dominos" },
-    { restaurantId: 3, restaurantName: "BurgerKing" },
-  ];
-  const itemList = [
-    { itemId:"6458641963", itemName: "Cake" },
-    { itemId: "1199438616", itemName: "Pizza" },
-    { itemId: 3, itemName: "Nodlles" },
-  ];
+  const fetchAll=()=>
+  {dispatch(viewAllRestaurantThunk())
+    dispatch(viewAllItemThunk())
+  }
+  useEffect(fetchAll,[])
 
 
   const onHandleChange = (event) => {
@@ -52,7 +51,7 @@ const AddItemToRestaurant = () => {
             <option disabled selected>
               Select Restaurant 
             </option>
-            {restaurantList.map((restaurant) => (
+            {response.restaurantList.map((restaurant) => (
               <option
                 key={restaurant.restaurantId}
                 value={restaurant.restaurantId}
@@ -73,7 +72,7 @@ const AddItemToRestaurant = () => {
             <option disabled selected>
               Select Item 
             </option>
-            {itemList.map((item) => (
+            {response.itemList.map((item) => (
               <option key={item.itemId} value={item.itemId}>
                 {item.itemName}
               </option>

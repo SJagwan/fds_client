@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { viewItemByCategoryThunk } from "../../redux/item/viewItemByCategory/viewItemByCategoryAction";
+import { viewAllCategoryThunk } from "../../redux/category/viewAllCategory/viewAllCategoryAction";
 import DisplayListItemDetail from "./DisplayListItemDetail";
 
 const ViewItembyCategory = () => {
@@ -8,16 +9,18 @@ const ViewItembyCategory = () => {
   const response = useSelector((state) => {
     return {
       item: state.viewItemByCategory.item,
+      categoryList: state.viewAllCategory.categories,
       error: state.viewItemByCategory.error,
     };
   });
   const [state, setState] = useState({ catId: "" });
 
-  const categoryList = [
-    { catId: "6096426597", name: "SJP" },
-    { catId: "7857171300", name: "Hardik" },
-    { catId: 3, name: "Food" },
-  ];
+  const fetchAll=()=>
+  {
+    dispatch(viewAllCategoryThunk())
+  }
+  useEffect(fetchAll,[])
+
   const onHandleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -33,16 +36,16 @@ const ViewItembyCategory = () => {
         <h1>View Item By Category</h1>
 
         <div className="form-group">
-          <label> Cat Id</label>
+          <label> Cat </label>
           <select
             name="catId"
             className="form-control"
             onChange={onHandleChange}
           >
             <option disabled selected>
-              Select Category Id
+              Select Category 
             </option>
-            {categoryList.map((category) => (
+            {response.categoryList.map((category) => (
               <option key={category.catId} value={category.catId}>
                 {category.name}
               </option>

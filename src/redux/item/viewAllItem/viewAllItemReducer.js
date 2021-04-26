@@ -1,7 +1,7 @@
 import { viewAllItemConstant } from "./viewAllItemConstant";
 
 const initial_State = {
-    items: undefined,
+    items: [],
     error: undefined,
   };
   export const viewAllItemReducer = (state = initial_State, action) => {

@@ -1,13 +1,17 @@
-import { useState } from "react";
+import {useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemThunk } from "../../redux/item/addItem/addItemAction";
 import DisplayItemDetail from "./DisplayItemDetail";
+import { viewAllCategoryThunk } from "../../redux/category/viewAllCategory/viewAllCategoryAction";
+import { viewAllRestaurantThunk } from "../../redux/restaurant/viewAllRestaurant/viewAllRestaurantAction";
 
 const AddItem = () => {
   const dispatch = useDispatch();
   const response = useSelector((state) => {
     return {
       item: state.addItem.item,
+      restaurantList:state.viewAllRestaurant.restaurants,
+      categoryList: state.viewAllCategory.categories,
       error: state.addItem.error,
     };
   });
@@ -20,17 +24,12 @@ const AddItem = () => {
     catId: "",
     validations: { itemName: undefined, cost: undefined },
   });
-
-  const restaurantList = [
-    { restaurantId: "0951797564", restaurantName: "PIZZAHUT" },
-    { restaurantId: 2, restaurantName: "Dominos" },
-    { restaurantId: 3, restaurantName: "BurgerKing" },
-  ];
-  const categoryList = [
-    { catId: "6096426597", name: " 1" },
-    { catId: 2, name: "Hardik" },
-    { catId: 3, name: "Food" },
-  ];
+  const fetchAll=()=>
+  {dispatch(viewAllRestaurantThunk())
+    dispatch(viewAllCategoryThunk())
+  }
+  useEffect(fetchAll,[])
+ 
 
   const onHandleChange = (event) => {
     const name = event.target.name;
@@ -108,7 +107,7 @@ const AddItem = () => {
         </div>
 
         <div className="form-group">
-          <label> Resturant Id</label>
+          <label> Resturant </label>
           <select
             name="restaurantId"
             className="form-control"
@@ -117,7 +116,7 @@ const AddItem = () => {
             <option disabled selected>
               Select Restaurant
             </option>
-            {restaurantList.map((restaurant) => (
+            {response.restaurantList.map((restaurant) => (
               <option
                 key={restaurant.restaurantId}
                 value={restaurant.restaurantId}
@@ -129,16 +128,16 @@ const AddItem = () => {
         </div>
 
         <div className="form-group">
-          <label> Cat Id</label>
+          <label> Category</label>
           <select
             name="catId"
             className="form-control"
             onChange={onHandleChange}
           >
             <option disabled selected>
-              Select Category Id
+              Select Category 
             </option>
-            {categoryList.map((category) => (
+            {response.categoryList.map((category) => (
               <option key={category.catId} value={category.catId}>
                 {category.name}
               </option>

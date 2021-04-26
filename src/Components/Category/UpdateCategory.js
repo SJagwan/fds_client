@@ -1,23 +1,27 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCategoryThunk } from "../../redux/category/updateCategory/updateCategoryAction";
+import { viewAllCategoryThunk } from "../../redux1/category/viewAllCategory/viewAllCategoryAction";
+import { updateCategoryThunk } from "../../redux1/category/updateCategory/updateCategoryAction";
 import DisplayCategory from "./DisplayCategory";
 
 const UpdateCategory = () => {
   const dispatch = useDispatch();
   const response = useSelector((state)=>{
       return{
+        categoryList: state.viewAllCategory.categories,
           category:state.updateCategory.category,
           error:state.updateCategory.error
       }
   })
+
+  const fetchAllCategory = () => {
+    dispatch(viewAllCategoryThunk());
+  };
+
+  useEffect(fetchAllCategory, []);
  
 
-  const categoryList = [
-    { id: 1996889084, name: "SJ" },
-    { id: 2, name: "Hardik" },
-    { id: 3, name: "O4ASJ" },
-  ];
+  
 
   const [state, setState] = useState({ name: "", id: ""});
 
@@ -42,12 +46,12 @@ const UpdateCategory = () => {
       <form onSubmit={onHandleSubmit}>
       <div className="form-group">
         <label>Id</label>
-        <select id="categoryId" className = "form-control" onChange={onHandleId}>
+        <select id="catId" className = "form-control" onChange={onHandleId}>
           <option disabled selected>
             select id
           </option>
-          {categoryList.map((category) => (
-            <option key={category.id} value={category.id}>
+          {response.categoryList.map((category) => (
+            <option key={category.catId} value={category.catId}>
               {category.name}
             </option>
           ))}

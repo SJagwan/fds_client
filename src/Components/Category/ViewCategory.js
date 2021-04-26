@@ -1,23 +1,27 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { viewCategoryThunk } from "../../redux/category/viewCategory/viewCategoryAction";
+import { viewAllCategoryThunk } from "../../redux1/category/viewAllCategory/viewAllCategoryAction";
+import { viewCategoryThunk } from "../../redux1/category/viewCategory/viewCategoryAction";
 import DisplayCategory from "./DisplayCategory";
 
 const ViewCategory = () => {
   const dispatch = useDispatch();
   const response = useSelector((state)=>{
       return{
+        categoryList: state.viewAllCategory.categories,
           category:state.viewCategory.category,
           error:state.viewCategory.error
       }
   })
+
+  const fetchAllCategory = () => {
+    dispatch(viewAllCategoryThunk());
+  };
+
+  useEffect(fetchAllCategory, []);
   
 
-  const categoryList = [
-    { id: "7091097141", name: "chips" },
-    { id: "2", name: "Hardik" },
-    { id: "3", name: "O4ASJ" },
-  ];
+ 
 
   const [state, setState] = useState({ id: ""});
  
@@ -42,8 +46,8 @@ const ViewCategory = () => {
           <option disabled selected>
             select id
           </option>
-          {categoryList.map((category) => (
-            <option key={category.id} value={category.id}>
+          {response.categoryList.map((category) => (
+            <option key={category.catId} value={category.catId}>
               {category.name}
             </option>
           ))}

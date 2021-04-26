@@ -1,7 +1,7 @@
 import { viewAllCategoryConstant } from "./viewAllCategoryConstant";
 
 const initial_State = {
-  categories: undefined,
+  categories: [],
   error: undefined,
 };
 

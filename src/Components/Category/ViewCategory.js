@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { viewAllCategoryThunk } from "../../redux1/category/viewAllCategory/viewAllCategoryAction";
-import { viewCategoryThunk } from "../../redux1/category/viewCategory/viewCategoryAction";
+import { viewAllCategoryThunk } from "../../redux/category/viewAllCategory/viewAllCategoryAction";
+import { viewCategoryThunk } from "../../redux/category/viewCategory/viewCategoryAction";
 import DisplayCategory from "./DisplayCategory";
 
 const ViewCategory = () => {

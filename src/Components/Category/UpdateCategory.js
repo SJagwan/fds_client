@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { viewAllCategoryThunk } from "../../redux1/category/viewAllCategory/viewAllCategoryAction";
-import { updateCategoryThunk } from "../../redux1/category/updateCategory/updateCategoryAction";
+import { viewAllCategoryThunk } from "../../redux/category/viewAllCategory/viewAllCategoryAction";
+import { updateCategoryThunk } from "../../redux/category/updateCategory/updateCategoryAction";
 import DisplayCategory from "./DisplayCategory";
 
 const UpdateCategory = () => {

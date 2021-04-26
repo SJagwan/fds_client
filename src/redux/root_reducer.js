@@ -28,6 +28,9 @@ import { addOrderReducer } from "./orderDetail/addOrderDetail/addOrderReducer";
 import { updateOrderReducer } from "./orderDetail/updateOrderDetail/updateOrderReducer";
 import { viewOrderByCustomerIdReducer } from "./orderDetail/viewOrderByCustomer/viewOrderByCustomerReducer";
 import {viewOrderReducer} from "./orderDetail/viewOrderDetail/viewOrderReducer";
+
+import { viewAllRestaurantReducer } from "./restaurant/viewAllRestaurant/viewAllRestaurantReducer";
+
 import { viewAllItemReducer } from "./item/viewAllItem/viewAllItemReducer";
 
 
@@ -54,6 +57,8 @@ import { viewAllItemReducer } from "./item/viewAllItem/viewAllItemReducer";
     viewAllCategory : viewAllCategoryReducer,
      viewBillById : viewBillByIdReducer,
      viewBillByDate: viewBillByDateReducer,
-     viewAllItem:viewAllItemReducer,
+     viewAllRestaurant: viewAllRestaurantReducer,
+     viewAllItem:viewAllItemReducer
+
 
 })

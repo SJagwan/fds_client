@@ -1,4 +1,4 @@
-import { updateOrderRequest } from "../../../services/orderDetailService";
+import { updateOrderRequest } from "../../../services/OrderDetailService";
 import { updateOrderConstant } from "./updateOrderConstant";
 
 export const updateOrderStart = () => ({

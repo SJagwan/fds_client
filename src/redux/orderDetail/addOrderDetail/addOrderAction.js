@@ -1,4 +1,4 @@
-import { addOrderRequest } from "../../../services/orderDetailService";
+import { addOrderRequest } from "../../../services/OrderDetailService";
 import { Empty_Cart_Action } from "../../foodCart/itemToCart/itemToCartAction";
 import { addOrderConstant } from "./addOrderConstant";
 

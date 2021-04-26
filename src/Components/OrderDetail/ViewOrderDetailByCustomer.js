@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { viewOrderByCustomerThunk } from "../../redux/orderDetail/viewOrderByCustomer/viewOrderByCustomerAction";
 import DisplayListOrderDetail from "./DisplayListOrderDetail";

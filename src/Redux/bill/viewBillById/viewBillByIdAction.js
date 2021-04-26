@@ -1,4 +1,4 @@
-import { viewBillByIdRequest } from "../../../Services/billDetailsServices";
+import { viewBillByIdRequest } from "../../../services/billDetailsServices";
 import { viewBillByIdConstant } from "./viewBillByIdConstant";
 
 export const viewBillByIdStart=()=>({

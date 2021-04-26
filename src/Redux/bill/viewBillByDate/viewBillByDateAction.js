@@ -1,4 +1,4 @@
-import { viewBillByDateRequest } from "../../../Services/billDetailsServices"
+import { viewBillByDateRequest } from "../../../services/billDetailsServices"
 import { viewBillByDateConstant } from "./viewBillByDateConstant"
 
 

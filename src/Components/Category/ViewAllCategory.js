@@ -4,33 +4,30 @@ import { viewAllCategoryThunk } from "../../redux/category/viewAllCategory/viewA
 import DisplayListCategory from "./DisplayListCategory";
 
 const ViewAllCategory = () => {
-    const dispatch = useDispatch();
-  const response = useSelector((state)=>{
-      return{
-          category:state.viewAllCategory.categories,
-          error:state.viewAllCategory.error
-      }
-  })
+  const dispatch = useDispatch();
+  const response = useSelector((state) => {
+    return {
+      category: state.viewAllCategory.categories,
+      error: state.viewAllCategory.error,
+    };
+  });
 
-  const fetchAllCategory=()=>{dispatch(viewAllCategoryThunk());}
+  const fetchAllCategory = () => {
+    dispatch(viewAllCategoryThunk());
+  };
 
-   
+  useEffect(fetchAllCategory, []);
+  return (
+    <div>
+      {response.category ? (
+        <DisplayListCategory categoryList={response.category} />
+      ) : (
+        ""
+      )}
 
-    useEffect(fetchAllCategory,[])
-    return ( 
-        <div>
-             {
-               response.category ? 
-               <DisplayListCategory categoryList={response.category}/>: ""
-            }
+      {response.error ? response.error : ""}
+    </div>
+  );
+};
 
-           {
-               response.error ? response.error : ""
-           }
-
-
-        </div>
-     );
-}
- 
 export default ViewAllCategory;

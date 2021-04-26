@@ -53,7 +53,7 @@ const AddRestaurant = () => {
     return undefined;
   };
   const validateRestaurantPincode = (pincode) => {
-    if (pincode.length != 6) {
+    if (pincode.length !== 6) {
       return "length of pincode should be 6 digit";
     }
     return undefined;

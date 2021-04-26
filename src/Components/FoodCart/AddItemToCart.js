@@ -15,15 +15,15 @@ const AddItemToCart = () => {
 
 
   const itemList = [
-    { itemId: "0820997584", itemName: "Chocolate", cost: 1 },
-    { itemId: "2277354043", itemName: "pizza", cost: 10 },
+    { itemId: "5939374180", itemName: "Chocolate", cost: 1 },
+    { itemId: "0910551127", itemName: "pizza", cost: 10 },
     { itemId: "7385067487", itemName: "colddrink", cost: 1 },
   ];
 
   const onHandleAdd=(itemId)=>{
       const data={
         itemId:itemId,
-        customerId:"3180122623",
+        customerId:"7735787752",
         quantity:1
       }
       dispatch(itemToCartIncreaseThunk(data))

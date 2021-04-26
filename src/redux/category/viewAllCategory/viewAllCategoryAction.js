@@ -27,14 +27,13 @@ export const viewAllCategoryThunk = () => {
     promise
       .then((response) => {
         console.log(response.data);
-        let objActionSuccess = viewAllCategorySuccess(response.data)
-        dispatch(objActionSuccess)
+        let objActionSuccess = viewAllCategorySuccess(response.data);
+        dispatch(objActionSuccess);
       })
       .catch((error) => {
         console.log(error.message);
-        console.log(error.response.data);
-        let objActionFailure = viewAllCategoryFailure(error.response.data)
-        dispatch(objActionFailure)
+        let objActionFailure = viewAllCategoryFailure(error.response.data);
+        dispatch(objActionFailure);
       });
   };
 };

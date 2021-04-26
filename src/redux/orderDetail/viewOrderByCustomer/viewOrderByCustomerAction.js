@@ -1,4 +1,4 @@
-import { viewOrderByCustomerIdRequest} from "../../../services/orderDetailService";
+import { viewOrderByCustomerIdRequest} from "../../../services/OrderDetailService";
 import { viewOrderByCustomerIdConstant } from "./viewOrderByCustomerConstant";
 
 export const viewOrderByCustomerStart = () => ({

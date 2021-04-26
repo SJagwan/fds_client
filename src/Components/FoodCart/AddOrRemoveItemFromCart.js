@@ -1,8 +1,7 @@
-import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { itemToCartIncreaseThunk ,itemToCartReduceThunk } from "../../redux/foodCart/itemToCart/itemToCartAction";
 import { addOrderThunk } from "../../redux/orderDetail/addOrderDetail/addOrderAction";
-import { addItemToCartRequest } from "../../services/foodCartService";
 import DisplayOrderDetail from "../orderDetail/DisplayOrderDetail";
 import "./itemToCart.css";
 const AddOrRemoveItemFromCart = () => {
@@ -19,14 +18,14 @@ const AddOrRemoveItemFromCart = () => {
 
   const onHandlePlace = (e) => {
     e.preventDefault();
-    const customerId="3180122623"
+    const customerId="7735787752"
     dispatch(addOrderThunk(customerId))
 
   };
   const onHandleReduce = (itemId) => {
     const data={
       itemId:itemId,
-      customerId:"3180122623",
+      customerId:"7735787752",
       quantity:1
     }
     dispatch(itemToCartReduceThunk(data))

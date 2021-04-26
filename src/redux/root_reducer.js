@@ -1,5 +1,8 @@
 import { combineReducers } from "redux";
 
+import { viewBillByDateReducer } from "./bill/viewBillByDate/viewBillByDateReducer";
+import { viewBillByIdReducer } from "./bill/viewBillById/viewBillByIdReducer";
+
 import { addCategoryReducer } from "./category/addCategory/addCategoryReducer";
 import { updateCategoryReducer } from "./category/updateCategory/updateCategoryReducer";
 import { viewAllCategoryReducer } from "./category/viewAllCategory/viewAllCategoryReducer";
@@ -47,6 +50,8 @@ import {viewOrderReducer} from "./orderDetail/viewOrderDetail/viewOrderReducer";
     addCategory : addCategoryReducer,
     updateCategory : updateCategoryReducer,
     viewCategory : viewCategoryReducer,
-    viewAllCategory : viewAllCategoryReducer
+    viewAllCategory : viewAllCategoryReducer,
+     viewBillById : viewBillByIdReducer,
+     viewBillByDate: viewBillByDateReducer
 
 })

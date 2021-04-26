@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToRestaurantThunk } from "../../redux/item/addItemToRestaurant/addItemToRestaurantAction";
-import DisplayItemDetail from "./DisplayItemDetail";
+
 
 const AddItemToRestaurant = () => {
   const dispatch=useDispatch();
@@ -27,7 +27,7 @@ const AddItemToRestaurant = () => {
     { itemId: 3, itemName: "Nodlles" },
   ];
 
- // const response = { item: undefined, error: "" };
+
   const onHandleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;

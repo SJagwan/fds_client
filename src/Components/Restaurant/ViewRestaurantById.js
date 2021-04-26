@@ -17,7 +17,7 @@ const ViewRestaurantById = () => {
 
   });
   const RestaurantList = [
-    { id: "9170007147", name: "Taj" },
+    { id: "7207785170", name: "Taj" },
     { id: "9443084071", name: "Hardik" },
     { id: "2054398488", name: "O4ASJ" },
   ];

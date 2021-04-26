@@ -4,13 +4,13 @@ import { viewItemThunk } from "../../redux/item/viewItem/viewItemAction";
 import DisplayItemDetail from "./DisplayItemDetail";
 
 const ViewItem = () => {
-  const dispatch=useDispatch();
-  const response = useSelector((state)=>{
-    return{
-     item:state.viewItem.item,
-     error:state.viewItem.error
-    }
-  })
+  const dispatch = useDispatch();
+  const response = useSelector((state) => {
+    return {
+      item: state.viewItem.item,
+      error: state.viewItem.error,
+    };
+  });
   const [state, setState] = useState({ itemId: "" });
 
   const itemList = [
@@ -19,14 +19,6 @@ const ViewItem = () => {
     { itemId: 3, itemName: "Noodles" },
   ];
 
-  const itemmock = {
-    itemName: "Cake",
-    cost: "100",
-    quantity: "2",
-    restaurantId: "Dominos",
-    catId: "Bakery",
-  };
- // const response = { item: undefined, error: "" };
   const onHandleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -36,7 +28,6 @@ const ViewItem = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     dispatch(viewItemThunk(state));
-    //setState({ ...state });
   };
   return (
     <div className="container">
@@ -61,7 +52,9 @@ const ViewItem = () => {
           </select>
         </div>
 
-        <button  type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
       </form>
       {response.item ? <DisplayItemDetail item={response.item} /> : ""}
       {response.error ? response.error : ""}

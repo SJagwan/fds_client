@@ -29,6 +29,10 @@ import { updateOrderReducer } from "./orderDetail/updateOrderDetail/updateOrderR
 import { viewOrderByCustomerIdReducer } from "./orderDetail/viewOrderByCustomer/viewOrderByCustomerReducer";
 import {viewOrderReducer} from "./orderDetail/viewOrderDetail/viewOrderReducer";
 
+import { viewAllRestaurantReducer } from "./restaurant/viewAllRestaurant/viewAllRestaurantReducer";
+
+import { viewAllItemReducer } from "./item/viewAllItem/viewAllItemReducer";
+
 
  export const rootReducer=combineReducers({
     updateOrder : updateOrderReducer,
@@ -52,6 +56,9 @@ import {viewOrderReducer} from "./orderDetail/viewOrderDetail/viewOrderReducer";
     viewCategory : viewCategoryReducer,
     viewAllCategory : viewAllCategoryReducer,
      viewBillById : viewBillByIdReducer,
-     viewBillByDate: viewBillByDateReducer
+     viewBillByDate: viewBillByDateReducer,
+     viewAllRestaurant: viewAllRestaurantReducer,
+     viewAllItem:viewAllItemReducer
+
 
 })

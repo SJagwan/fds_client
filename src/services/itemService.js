@@ -38,3 +38,9 @@ export function viewItembyNameRequest(data){
     const promise=axios.get(url);
     return promise;
 }
+export function viewAllItemRequest(){
+    console.log("-------- Inside viewAllItemRequest--------")
+    const url = baseUrl+(`/items/viewall`)
+    const promise=axios.get(url);
+    return promise;
+}

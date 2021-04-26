@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { viewAllRestaurantThunk } from "../../redux/restaurant/viewAllRestaurant/viewAllRestaurantAction";
 import { viewRestaurantByIdThunk } from "../../redux/restaurant/viewRestaurantById/viewRestaurantByIdAction";
 import DisplayRestaurant from "./DisplayRestaurant";
 
@@ -8,6 +9,7 @@ const ViewRestaurantById = () => {
   const response=useSelector((state)=>{
     return{
       restaurant:state.viewRestaurantById.restaurant,
+      restaurantList:state.viewAllRestaurant.restaurants,
       error:state.viewRestaurantById.error
     }
   })
@@ -16,11 +18,10 @@ const ViewRestaurantById = () => {
     restaurantId: ""
 
   });
-  const RestaurantList = [
-    { id: "7207785170", name: "Taj" },
-    { id: "9443084071", name: "Hardik" },
-    { id: "2054398488", name: "O4ASJ" },
-  ];
+  const fetchAllRestaurant=()=>{dispatch(viewAllRestaurantThunk())}
+  useEffect(fetchAllRestaurant,[
+
+  ])
   const onHandleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -41,9 +42,9 @@ const ViewRestaurantById = () => {
           <option disabled selected>
             select restaurantId
           </option>
-          {RestaurantList.map((restaurant) => (
-            <option key={restaurant.id} value={restaurant.id}>
-              {restaurant.name}
+          {response.restaurantList.map((restaurant) => (
+            <option key={restaurant.restaurantId} value={restaurant.restaurantId}>
+              {restaurant.restaurantName}
             </option>
           ))}
         </select>

@@ -22,3 +22,10 @@ export function viewRestaurantByLocation(pincode){
     const promise=axios.get(url);
     return promise;
 }
+
+export function viewAllRestaurant(){
+    console.log("-----------Inside All View Restaurant Request----------")
+    const url=baseUrl+"/restaurants/viewall";
+    const promise=axios.get(url);
+    return promise;
+}

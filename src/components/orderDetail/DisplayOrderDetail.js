@@ -1,10 +1,14 @@
 const DisplayOrderDetail = ({order}) => {
     return ( 
-        <div>
-            <h1>Displaying Order Details</h1>
-            <p>{order.orderId}</p>
-            <p>{order.customerId}</p>
-            <p>{order.firstName}</p>
+        <div className="container-sm p-3">
+            <p>OrderId : {order.orderId}</p>
+            <p>CustomerId : {order.customerId}</p>
+            <p>FirstName : {order.firstName}</p>
+            <p>OrderDate : {order.orderDate}</p>
+            <p>OrderStatus :{order.orderStatus}</p>
+            <h6>Items</h6>
+            {order.itemName.map((item,index)=>
+            <p>{index+1} : {item}</p>)}
         </div>
      );
 }

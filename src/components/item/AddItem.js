@@ -1,4 +1,4 @@
-import {useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemThunk } from "../../redux/item/addItem/addItemAction";
 import DisplayItemDetail from "./DisplayItemDetail";
@@ -10,7 +10,7 @@ const AddItem = () => {
   const response = useSelector((state) => {
     return {
       item: state.addItem.item,
-      restaurantList:state.viewAllRestaurant.restaurants,
+      restaurantList: state.viewAllRestaurant.restaurants,
       categoryList: state.viewAllCategory.categories,
       error: state.addItem.error,
     };
@@ -24,12 +24,11 @@ const AddItem = () => {
     catId: "",
     validations: { itemName: undefined, cost: undefined },
   });
-  const fetchAll=()=>
-  {dispatch(viewAllRestaurantThunk())
-    dispatch(viewAllCategoryThunk())
-  }
-  useEffect(fetchAll,[])
- 
+  const fetchAll = () => {
+    dispatch(viewAllRestaurantThunk());
+    dispatch(viewAllCategoryThunk());
+  };
+  useEffect(fetchAll, []);
 
   const onHandleChange = (event) => {
     const name = event.target.name;
@@ -65,7 +64,7 @@ const AddItem = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-sm">
       <form onSubmit={onSubmit}>
         <h1>Add Item</h1>
 
@@ -135,7 +134,7 @@ const AddItem = () => {
             onChange={onHandleChange}
           >
             <option disabled selected>
-              Select Category 
+              Select Category
             </option>
             {response.categoryList.map((category) => (
               <option key={category.catId} value={category.catId}>
@@ -152,8 +151,21 @@ const AddItem = () => {
           </button>
         </div>
       </form>
-      {response.item ? <DisplayItemDetail item={response.item} /> : ""}
-      {response.error ? response.error : ""}
+      {response.item ? (
+        <div className="container p-3 my-3 bg-dark text-white">
+          <h4>Display Added Item</h4>
+          <DisplayItemDetail item={response.item} />
+        </div>
+      ) : (
+        ""
+      )}
+      {response.error ? (
+        <div className="alert alert-danger mt-3" role="alert">
+          {response.error}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

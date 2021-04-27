@@ -1,11 +1,10 @@
 const DisplayCustomerDetails = ({customer}) => {
     return ( 
-        <div>
-            <h1>Display Customer Details</h1>
-            <p>{customer.customerId}</p>
-            <p>{customer.firstName}</p>
-            <p>{customer.lastName}</p>
-            <p>{customer.gender}</p>
+        <div className="container-sm p-3">
+            <p>Customer Id : {customer.customerId}</p>
+            <p>FirstName : {customer.firstName}</p>
+            <p>LastName : {customer.lastName}</p>
+            <p>Gender : {customer.gender}</p>
         </div>
      );
 }

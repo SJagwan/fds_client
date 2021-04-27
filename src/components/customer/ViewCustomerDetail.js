@@ -12,19 +12,27 @@ const ViewCustomerDetail = () => {
     };
   });
   const fetchCustomer = () => {
-    const id = "1355009585";
+    const id = "633638409";
     dispatch(viewCustomerThunk(id));
   };
   useEffect(fetchCustomer, []);
   return (
-    <div className="container">
-      <h2>View Customer Request</h2>
+    <div className="container-sm">
       {response.customer ? (
-        <DisplayCustomerDetails customer={response.customer} />
+        <div className="container p-3 my-3 bg-dark text-white">
+          <h4>Display Customer</h4>
+          <DisplayCustomerDetails customer={response.customer} />
+        </div>
       ) : (
         ""
       )}
-      {response.error ? response.error : ""}
+      {response.error ? (
+        <div className="alert alert-danger mt-3" role="alert">
+          {response.error}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

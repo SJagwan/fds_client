@@ -1,11 +1,11 @@
 const DisplayBill = ({bill}) => {
     return ( 
-        <div>
-              <h2>Displaying Bill</h2>
-              
-              <p>{bill.billId}</p>
-              <p>{bill.orderStatus}</p>
-              <p>{bill.totalItem}</p>
+        <div className="container-sm p-3">     
+              <p>BillId : {bill.billId}</p>
+              <p>OrderStatus : {bill.orderStatus}</p>
+              <p>Total Item : {bill.totalItem}</p>
+              <p>Total Cost : {bill.totalCost}</p>
+              <p>Date : {bill.billDate}</p>
         </div>
      );
 }

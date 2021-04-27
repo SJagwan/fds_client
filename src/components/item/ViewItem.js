@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { viewAllItemThunk } from "../../redux/item/viewAllItem/viewAllItemAction";
 import { viewItemThunk } from "../../redux/item/viewItem/viewItemAction";
@@ -9,18 +9,16 @@ const ViewItem = () => {
   const response = useSelector((state) => {
     return {
       item: state.viewItem.item,
-      itemList:state.viewAllItem.items,
+      itemList: state.viewAllItem.items,
       error: state.viewItem.error,
     };
   });
   const [state, setState] = useState({ itemId: "" });
- 
-  const fetchAll=()=>
-  {
-    dispatch(viewAllItemThunk())
-  }
-  useEffect(fetchAll,[])
 
+  const fetchAll = () => {
+    dispatch(viewAllItemThunk());
+  };
+  useEffect(fetchAll, []);
 
   const onHandleChange = (event) => {
     const name = event.target.name;
@@ -33,7 +31,7 @@ const ViewItem = () => {
     dispatch(viewItemThunk(state));
   };
   return (
-    <div className="container">
+    <div className="container-sm">
       <h1> View Item</h1>
 
       <form onSubmit={onSubmit}>
@@ -59,8 +57,21 @@ const ViewItem = () => {
           Submit
         </button>
       </form>
-      {response.item ? <DisplayItemDetail item={response.item} /> : ""}
-      {response.error ? response.error : ""}
+      {response.item ? (
+        <div className="container p-3 my-3 bg-dark text-white">
+          <h4>Display Item</h4>
+          <DisplayItemDetail item={response.item} />
+        </div>
+      ) : (
+        ""
+      )}
+      {response.error ? (
+        <div className="alert alert-danger mt-3" role="alert">
+          {response.error}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -4,23 +4,21 @@ import { updateOrderThunk } from "../../redux/orderDetail/updateOrderDetail/upda
 import DisplayOrderDetail from "./DisplayOrderDetail";
 
 const UpdateOrderDetail = () => {
+  const dispatch = useDispatch();
 
-  const dispatch=useDispatch();
-
-  const response=useSelector((state)=>{
-    return{
-      order:state.updateOrder.orderDetail,
-      error:state.updateOrder.error
-    }
-  })
+  const response = useSelector((state) => {
+    return {
+      order: state.updateOrder.orderDetail,
+      error: state.updateOrder.error,
+    };
+  });
 
   const orderList = [{ orderId: 1 }, { orderId: 2 }, { orderId: 3 }];
 
   const [state, setState] = useState({
     status: "",
-    orderId: ""
+    orderId: "",
   });
-
 
   const onHandleChange = (e) => {
     const { name, value } = e.target;
@@ -31,12 +29,16 @@ const UpdateOrderDetail = () => {
     dispatch(updateOrderThunk(state));
   };
   return (
-    <div className="container">
+    <div className="container-sm">
       <h2>Update Order Request</h2>
       <form onSubmit={onHandleSubmit}>
         <div className="form-group">
           <label>Order Id</label>
-          <select className="form-control" name="orderId" onChange={onHandleChange}>
+          <select
+            className="form-control"
+            name="orderId"
+            onChange={onHandleChange}
+          >
             <option disabled selected>
               select orderId
             </option>
@@ -49,7 +51,11 @@ const UpdateOrderDetail = () => {
         </div>
         <div className="form-group">
           <label>Status</label>
-          <select className="form-control" name="status" onChange={onHandleChange}>
+          <select
+            className="form-control"
+            name="status"
+            onChange={onHandleChange}
+          >
             <option disabled selected>
               {" "}
               select Status{" "}
@@ -58,14 +64,25 @@ const UpdateOrderDetail = () => {
             <option value="delivered"> Delivered </option>
           </select>
         </div>
-        <button className="btn btn-primary" type="submit">Submit</button>
+        <button className="btn btn-primary" type="submit">
+          Submit
+        </button>
       </form>
       {response.order ? (
-        <DisplayOrderDetail order={response.order} />
+        <div className="container p-3 my-3 bg-dark text-white">
+          <h4>Display Updated Order</h4>
+          <DisplayOrderDetail order={response.order} />
+        </div>
       ) : (
         ""
       )}
-      {response.error ? response.error : ""}
+      {response.error ? (
+        <div className="alert alert-danger mt-3" role="alert">
+          {response.error}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

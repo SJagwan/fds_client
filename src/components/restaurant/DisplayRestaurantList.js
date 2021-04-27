@@ -2,7 +2,7 @@ import DisplayRestaurant from "./DisplayRestaurant";
 
 const DisplayRestaurantList = ({restaurantList}) => {
     return ( 
-        <div>
+        <div >
             {
                 restaurantList.map((restaurant)=> <div key={restaurant.restaurantId}> <DisplayRestaurant restaurant={restaurant}/></div>)
             }

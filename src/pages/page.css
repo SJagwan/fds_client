@@ -1,5 +1,5 @@
 .container {
-  margin-top: 2em;
+  margin-top: 5em;
 }
 
 .page {
@@ -8,7 +8,6 @@
 }
 
 .pageButton {
-  margin-top: 2em;
   width: 22%;
   display: flex;
   flex-direction: column;
@@ -19,10 +18,10 @@
   overflow: hidden;
 }
 .pageLine {
-  width: 2%;
+  width:2%;
   border-left: 1px solid black;
   height: 325px;
 }
 .pageContainer {
-  width: 60%;
+  width: 65%;
 }

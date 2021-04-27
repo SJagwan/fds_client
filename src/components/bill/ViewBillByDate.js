@@ -4,52 +4,71 @@ import { viewBillByDateThunk } from "../../redux/bill/viewBillByDate/viewBillByD
 import DisplayBillList from "./DisplayBillList";
 
 const ViewBillByDate = () => {
-    const dispatch=useDispatch();
-    const response=useSelector((state)=>{
-        return {
-            bill:state.viewBillByDate.bill,
-            error:state.viewBillByDate.error
-        }
-    })
+  const dispatch = useDispatch();
+  const response = useSelector((state) => {
+    return {
+      bill: state.viewBillByDate.bill,
+      error: state.viewBillByDate.error,
+    };
+  });
 
-    const [state, setState] = useState({
-        startDate: "",
-        endDate:""
-    
-      });
-      
-      
-      const onHandleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setState({ ...state, [name]: value });
-      };
-     
-      const onHandleSubmit = (e) => {
-        e.preventDefault();
-        dispatch(viewBillByDateThunk(state))
-      };
+  const [state, setState] = useState({
+    startDate: "",
+    endDate: "",
+  });
 
-    return (  
-        <div>
-           <h2> View Bill By Date</h2>
+  const onHandleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setState({ ...state, [name]: value });
+  };
+
+  const onHandleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(viewBillByDateThunk(state));
+  };
+
+  return (
+    <div className="container-sm">
+      <h2> View Bill By Date</h2>
       <form onSubmit={onHandleSubmit}>
-        <label>StartDate</label>
-        <input type="date" name="startDate" onChange={onHandleChange} />
-        <label>EndDate</label>
-        <input type="date" name="endDate" onChange={onHandleChange} />
-        <button>Submit</button>
-      </form>
-      {
-       response.bill?
-       (<DisplayBillList billList={response.bill}/>):""
-      }
-      {
-        response.error ? response.error :""
-      }
-     
+        <div className="form-group">
+          <label>StartDate</label>
+          <input
+            className="form-control"
+            type="date"
+            name="startDate"
+            onChange={onHandleChange}
+          />
         </div>
-    );
-}
- 
+        <div className="form-group">
+          <label>EndDate</label>
+          <input
+            className="form-control"
+            type="date"
+            name="endDate"
+            onChange={onHandleChange}
+          />
+        </div>
+        <button className="btn btn-primary">Submit</button>
+      </form>
+      {response.bill ? (
+        <div className="container p-3 my-3 bg-dark text-white">
+          <h4>Displaying Bill List</h4>
+          <DisplayBillList billList={response.bill} />
+        </div>
+      ) : (
+        ""
+      )}
+      {response.error ? (
+        <div className="alert alert-danger mt-3" role="alert">
+          {response.error}
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
+  );
+};
+
 export default ViewBillByDate;

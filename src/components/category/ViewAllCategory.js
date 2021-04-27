@@ -18,14 +18,23 @@ const ViewAllCategory = () => {
 
   useEffect(fetchAllCategory, []);
   return (
-    <div>
+    <div className="container-sm">
       {response.category ? (
-        <DisplayListCategory categoryList={response.category} />
+        <div className="container p-3 my-3 bg-dark text-white">
+          <h4>Displaying Category List</h4>
+          <DisplayListCategory categoryList={response.category} />
+        </div>
       ) : (
         ""
       )}
 
-      {response.error ? response.error : ""}
+      {response.error ? (
+        <div className="alert alert-danger mt-3" role="alert">
+          {response.error}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

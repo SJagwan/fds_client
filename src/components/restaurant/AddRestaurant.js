@@ -4,13 +4,13 @@ import { addRestaurantThunk } from "../../redux/restaurant/addRestaurant/addRest
 import DisplayRestaurant from "./DisplayRestaurant";
 
 const AddRestaurant = () => {
-  const dispatch=useDispatch();
-  const response=useSelector((state)=>{
-    return{
-      restaurant:state.addRestaurant.restaurant,
-      error:state.addRestaurant.error
-    }
-  })
+  const dispatch = useDispatch();
+  const response = useSelector((state) => {
+    return {
+      restaurant: state.addRestaurant.restaurant,
+      error: state.addRestaurant.error,
+    };
+  });
   const [state, setState] = useState({
     restaurantName: "",
     managerName: "",
@@ -31,20 +31,19 @@ const AddRestaurant = () => {
     if (name === "restaurantName") {
       validationMsg = validateRestaurantName(value);
     }
-    if(name==="pincode"){
-      validationMsg= validateRestaurantPincode(value);
+    if (name === "pincode") {
+      validationMsg = validateRestaurantPincode(value);
     }
     const newValidations = { ...state.validations, [name]: validationMsg };
-    setState({ ...state, [name]: value,validations: newValidations });
+    setState({ ...state, [name]: value, validations: newValidations });
   };
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addRestaurantThunk(state))
+    dispatch(addRestaurantThunk(state));
     if (state.validations.restaurantName || state.validations.pincode) {
       return;
     }
-    
   };
   const validateRestaurantName = (name) => {
     if (name.length < 5) {
@@ -59,7 +58,7 @@ const AddRestaurant = () => {
     return undefined;
   };
   return (
-    <div className="container">
+    <div className="container-sm">
       <h2>Add Restaurant</h2>
       <form onSubmit={onHandleSubmit}>
         <div className="form-group">
@@ -71,9 +70,7 @@ const AddRestaurant = () => {
             onChange={onHandleChange}
           />
           {state.validations.restaurantName ? (
-            <div>
-              {state.validations.restaurantName}
-            </div>
+            <div>{state.validations.restaurantName}</div>
           ) : (
             ""
           )}
@@ -90,7 +87,7 @@ const AddRestaurant = () => {
         <div className="form-group">
           <label>ContactNumber</label>
           <input
-            type="text"
+            type="number"
             name="contactNumber"
             className="form-control"
             onChange={onHandleChange}
@@ -111,6 +108,7 @@ const AddRestaurant = () => {
             type="text"
             name="area"
             className="form-control"
+            required
             onChange={onHandleChange}
           />
         </div>
@@ -156,12 +154,11 @@ const AddRestaurant = () => {
             type="text"
             name="pincode"
             className="form-control"
+            required
             onChange={onHandleChange}
           />
           {state.validations.pincode ? (
-            <div>
-              {state.validations.pincode}
-            </div>
+            <div>{state.validations.pincode}</div>
           ) : (
             ""
           )}
@@ -170,11 +167,20 @@ const AddRestaurant = () => {
         <br />
       </form>
       {response.restaurant ? (
-        <DisplayRestaurant restaurant={response.restaurant} />
+        <div className="container p-3 my-3 bg-dark text-white">
+          <h4>Added Restaurant Details</h4>
+          <DisplayRestaurant restaurant={response.restaurant} />
+        </div>
       ) : (
         ""
       )}
-      {response.error ? response.error : ""}
+      {response.error ? (
+        <div className="alert alert-danger mt-3" role="alert">
+          {response.error}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

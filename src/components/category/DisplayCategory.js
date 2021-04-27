@@ -1,9 +1,8 @@
 const DisplayCategory = ({category}) => {
     return (
-        <div>
-            <h1>Displaying Category Details</h1>
-            <p>{category.catId}</p>
-            <p>{category.name}</p>
+        <div className="container-sm p-3">
+            <p>CategoryId : {category.catId}</p>
+            <p>Category Name :{category.name}</p>
         </div>
       );
 }

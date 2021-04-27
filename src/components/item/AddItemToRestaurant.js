@@ -38,7 +38,7 @@ const AddItemToRestaurant = () => {
    // setState({ ...state });
   };
   return (
-    <div className="container">
+    <div className="container-sm">
       <form onSubmit={onSubmit}>
         <h1>Add Item To Restaurant</h1>
         <div className="form-group">
@@ -83,8 +83,18 @@ const AddItemToRestaurant = () => {
       </form>
       {/* {response.item ? <DisplayItemDetail item={response.item} /> : ""}
       {response.error ? response.error : ""} */}
-    {response.restaurant ? <p>Item Added Successfully in Restaurant = {response.restaurant.restaurantName}</p>: ""}
-      {response.error ? response.error : ""}
+    {response.restaurant ?(
+        <div class="alert alert-success mt-3" role="alert">
+           <p>Item Added Successfully in Restaurant = {response.restaurant.restaurantName}</p>
+        </div>
+      ) 
+   
+    : ""}
+      {response.error ? (
+        <div className="alert alert-danger mt-3" role="alert">
+          {response.error}
+        </div>
+      )  : ""}
     </div>
   );
 };

@@ -1,11 +1,10 @@
 const DisplayRestaurant = ({restaurant}) => {
     return ( 
-        <div>
-              <h2>Displaying Restaurant</h2>
-              <p>{restaurant.restaurantId}</p>
-              <p>{restaurant.restaurantName}</p>
-              <p>{restaurant.managerName}</p>
-              <p>{restaurant.contactNumber}</p>
+        <div className="container-sm p-3"> 
+              <p>RestaurantId : {restaurant.restaurantId}</p>
+              <p>RestaurantName : {restaurant.restaurantName}</p>
+              <p>Manager Name : {restaurant.managerName}</p>
+              <p>Contact Number : {restaurant.contactNumber}</p>
         </div>
      );
 }

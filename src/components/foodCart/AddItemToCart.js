@@ -1,29 +1,32 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { withRouter } from "react-router";
 import { itemToCartIncreaseThunk } from "../../redux/foodCart/itemToCart/itemToCartAction";
+import { viewAllItemThunk } from "../../redux/item/viewAllItem/viewAllItemAction";
 import './itemToCart.css'
-const AddItemToCart = () => {
+const AddItemToCart = ({history}) => {
 
     const dispatch=useDispatch();
 
     const response=useSelector((state)=>{
         return{
             itemDetail:state.itemToCart.itemDetail,
+            itemList:state.viewAllItem.items,
             error:state.itemToCart.error
         }
     })
 
 
-
-  const itemList = [
-    { itemId: "5939374180", itemName: "Chocolate", cost: 1 },
-    { itemId: "0910551127", itemName: "pizza", cost: 10 },
-    { itemId: "7385067487", itemName: "colddrink", cost: 1 },
-  ];
+  const fetchAll=()=>
+  {
+    dispatch(viewAllItemThunk())
+  }
+  useEffect(fetchAll,[])
 
   const onHandleAdd=(itemId)=>{
       const data={
         itemId:itemId,
-        customerId:"7735787752",
+        customerId:"2266658955",
         quantity:1
       }
       dispatch(itemToCartIncreaseThunk(data))
@@ -36,24 +39,24 @@ const AddItemToCart = () => {
       <div className="heading">
         <h5>Name</h5>
         <div className="">
-          <h5>Cost</h5>
+          <h6>Cost</h6>
           <h6>ClickToAdd &#8595;</h6>
         </div>
       </div>
-      {itemList.map((item) => (
+      {response.itemList.map((item) => (
         <div key={item.itemId} className="item">
           <h6>{item.itemName}</h6>
           <div>
             <h6>&#8377; {item.cost}</h6>
-            <button type="submit" onClick={()=>onHandleAdd(item.itemId)} className="btn btn-primary">
+            <button type="submit" onClick={()=>onHandleAdd(item.itemId)} className="btn btn-primary btn-sm">
               AddToCart
             </button>
           </div>
         </div>
       ))}
-      <button className="btn btn-primary">Go To Cart</button>
+      <button className="btn btn-primary" onClick={()=>history.push("/cart/cart")}>Go To Cart</button>
     </div>
   );
 };
 
-export default AddItemToCart;
+export default withRouter(AddItemToCart);

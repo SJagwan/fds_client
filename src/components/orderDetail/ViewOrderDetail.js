@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DisplayOrderDetail from "./DisplayOrderDetail";
-import {viewOrderThunk} from '../../redux/orderDetail/viewOrderDetail/viewOrderAction'
+import { viewOrderThunk } from "../../redux/orderDetail/viewOrderDetail/viewOrderAction";
 
 const ViewOrderDetail = () => {
-
-  const dispatch=useDispatch();
-  const response=useSelector((state)=>{
-    return{
-      order:state.viewOrder.orderDetail,
-      error:state.viewOrder.error
-    }
-  })
+  const dispatch = useDispatch();
+  const response = useSelector((state) => {
+    return {
+      order: state.viewOrder.orderDetail,
+      error: state.viewOrder.error,
+    };
+  });
   const orderList = [{ orderId: 1 }, { orderId: 2 }, { orderId: 3 }];
   const [state, setState] = useState({
     orderId: "",
@@ -23,10 +22,10 @@ const ViewOrderDetail = () => {
   };
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    dispatch(viewOrderThunk(state))
+    dispatch(viewOrderThunk(state));
   };
   return (
-    <div className="container">
+    <div className="container-sm">
       <h2>View Order Detail</h2>
       <form onSubmit={onHandleSubmit}>
         <div className="form-group">
@@ -51,11 +50,20 @@ const ViewOrderDetail = () => {
         </button>
       </form>
       {response.order ? (
-        <DisplayOrderDetail order={response.order} />
+        <div className="container p-3 my-3 bg-dark text-white">
+          <h4>Display Order</h4>
+          <DisplayOrderDetail order={response.order} />
+        </div>
       ) : (
         ""
       )}
-      {response.error ? response.error : ""}
+      {response.error ? (
+        <div className="alert alert-danger mt-3" role="alert">
+          {response.error}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

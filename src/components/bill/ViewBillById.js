@@ -20,7 +20,7 @@ const ViewBillById = () => {
     { billId: "9443084071" },
     { billId: "2054398488" },
   ];
-  
+
   const onHandleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -33,25 +33,45 @@ const ViewBillById = () => {
   };
 
   return (
-    <div>
+    <div className="container-sm">
       <h2>View By Bill Id</h2>
       <form onSubmit={onHandleSubmit}>
-        <label>Bill By Id</label>
-        <select name="billId" onChange={onHandleChange}>
-          <option disabled selected>
-            select billId
-          </option>
-          {billList.map((bill, index) => (
-            <option key={bill.billId} value={bill.billId}>
-              {index + 1}
+        <div className="form-group">
+          <label>Bill By Id</label>
+          <select
+            className="form-control"
+            name="billId"
+            onChange={onHandleChange}
+          >
+            <option disabled selected>
+              select billId
             </option>
-          ))}
-        </select>
-        <button>Submit</button>
+            {billList.map((bill, index) => (
+              <option key={bill.billId} value={bill.billId}>
+                {index + 1}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <button className="btn btn-primary">Submit</button>
         <br />
       </form>
-      {response.bill ? <DisplayBill bill={response.bill} /> : ""}
-      {response.error ? response.error : ""}
+      {response.bill ? (
+        <div className="container p-3 my-3 bg-dark text-white">
+          <h4>Displaying Bill</h4>
+          <DisplayBill bill={response.bill} />
+        </div>
+      ) : (
+        ""
+      )}
+      {response.error ? (
+        <div className="alert alert-danger mt-3" role="alert">
+          {response.error}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -24,7 +24,7 @@ const ViewItembyName = () => {
     // setState({...state})
   };
   return (
-    <div className="container">
+    <div className="container-sm">
       <h1>View Item By Name</h1>
       <form onSubmit={onSubmit}>
         <div className="form-group">
@@ -42,8 +42,21 @@ const ViewItembyName = () => {
           Submit
         </button>
       </form>
-      {response.item ? <DisplayListItemDetail itemList={response.item} /> : ""}
-      {response.error ? response.error : ""}
+      {response.item ? (
+        <div className="container p-3 my-3 bg-dark text-white">
+          <h4>Display Item</h4>
+          <DisplayListItemDetail itemList={response.item} />
+        </div>
+      ) : (
+        ""
+      )}
+      {response.error ? (
+        <div className="alert alert-danger mt-3" role="alert">
+          {response.error}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { viewItemByCategoryThunk } from "../../redux/item/viewItemByCategory/viewItemByCategoryAction";
 import { viewAllCategoryThunk } from "../../redux/category/viewAllCategory/viewAllCategoryAction";
@@ -15,11 +15,10 @@ const ViewItembyCategory = () => {
   });
   const [state, setState] = useState({ catId: "" });
 
-  const fetchAll=()=>
-  {
-    dispatch(viewAllCategoryThunk())
-  }
-  useEffect(fetchAll,[])
+  const fetchAll = () => {
+    dispatch(viewAllCategoryThunk());
+  };
+  useEffect(fetchAll, []);
 
   const onHandleChange = (event) => {
     const name = event.target.name;
@@ -31,7 +30,7 @@ const ViewItembyCategory = () => {
     dispatch(viewItemByCategoryThunk(state));
   };
   return (
-    <div className="container">
+    <div className="container-sm">
       <form onSubmit={onSubmit}>
         <h1>View Item By Category</h1>
 
@@ -43,7 +42,7 @@ const ViewItembyCategory = () => {
             onChange={onHandleChange}
           >
             <option disabled selected>
-              Select Category 
+              Select Category
             </option>
             {response.categoryList.map((category) => (
               <option key={category.catId} value={category.catId}>
@@ -57,8 +56,21 @@ const ViewItembyCategory = () => {
         </button>
       </form>
 
-      {response.item ? <DisplayListItemDetail itemList={response.item} /> : ""}
-      {response.error ? response.error : ""}
+      {response.item ? (
+        <div className="container p-3 my-3 bg-dark text-white">
+          <h4>Display Item</h4>
+          <DisplayListItemDetail itemList={response.item} />
+        </div>
+      ) : (
+        ""
+      )}
+      {response.error ? (
+        <div className="alert alert-danger mt-3" role="alert">
+          {response.error}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

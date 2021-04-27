@@ -4,16 +4,14 @@ import { addCustomerThunk } from "../../redux/customer/addCustomer/addCustomerAc
 import DisplayCustomerDetails from "./DisplayCustomerDetail";
 
 const AddCustomerDetail = () => {
+  const dispatch = useDispatch();
+  const response = useSelector((state) => {
+    return {
+      customer: state.addCustomer.customer,
+      error: state.addCustomer.error,
+    };
+  });
 
-  const dispatch=useDispatch();
-  const response=useSelector((state)=>{
-    return{
-    customer:state.addCustomer.customer,
-    error:state.addCustomer.error
-    }
-  })
-
-  
   const [state, setState] = useState({
     firstName: "",
     lastName: "",
@@ -45,8 +43,8 @@ const AddCustomerDetail = () => {
     e.preventDefault();
     dispatch(addCustomerThunk(state));
     if (state.validations.fistName || state.validations.age) {
-        return;
-      }
+      return;
+    }
   };
   const validateAge = (age) => {
     if (age <= 0) {
@@ -67,7 +65,7 @@ const AddCustomerDetail = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-sm">
       <h2>Add Customer Request</h2>
       <form onSubmit={onHandleSubmit}>
         <div className="form-group">
@@ -111,7 +109,7 @@ const AddCustomerDetail = () => {
             name="mobileNumber"
             minlength="10"
             maxlength="10"
-            pattern="[0-9]+" 
+            pattern="[0-9]+"
             onChange={onHandleChange}
           />
         </div>
@@ -121,6 +119,7 @@ const AddCustomerDetail = () => {
             type="email"
             className="form-control"
             name="email"
+            required
             onChange={onHandleChange}
           />
         </div>
@@ -130,6 +129,7 @@ const AddCustomerDetail = () => {
             type="text"
             className="form-control"
             name="gender"
+            required
             onChange={onHandleChange}
           />
         </div>
@@ -165,11 +165,20 @@ const AddCustomerDetail = () => {
       </form>
 
       {response.customer ? (
-        <DisplayCustomerDetails customer={response.customer} />
+        <div className="container p-3 my-3 bg-dark text-white">
+          <h4>Display Added Customer</h4>
+          <DisplayCustomerDetails customer={response.customer} />
+        </div>
       ) : (
         ""
       )}
-      {response.error ? response.error : ""}
+      {response.error ? (
+        <div className="alert alert-danger mt-3" role="alert">
+          {response.error}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -18,22 +18,10 @@ export const updateCustomerFailure=(error)=>({
     payload:undefined,
     error:error
 })
-export const updateCustomerThunk=(state)=>{
+export const updateCustomerThunk=(data)=>{
     return (dispatch)=>{
         const objAction=updateCustomerStart();
         dispatch(objAction)
-        const data={
-            id:"1355009585",
-            firstName:state.firstName,
-            lastName:state.lastName,
-            gender:state.gender,
-            age:state.age,
-            email:state.email,
-            mobileNumber:state.mobileNumber,
-            area:state.area,
-            pincode:state.pincode,
-            buildingName:state.buildingName
-          }
         const promise=updateCustomerRequest(data);
         promise.then((response)=>{
         console.log(response.data);

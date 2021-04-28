@@ -21,3 +21,8 @@ export function viewCustomerRequest(id) {
   const promise = axios.get(url);
   return promise;
 }
+export function viewAllCustomerRequest(){
+  const url = baseUrl + `/customers/viewall`;
+  const promise = axios.get(url);
+  return promise;
+}

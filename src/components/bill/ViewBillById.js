@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { viewAllBillThunk } from "../../redux/bill/viewAllBills/viewAllBillAction";
+
 import { viewBillByIdThunk } from "../../redux/bill/viewBillById/viewBillByIdAction";
 import DisplayBill from "./DisplayBill";
 
@@ -8,18 +10,21 @@ const ViewBillById = () => {
   const response = useSelector((state) => {
     return {
       bill: state.viewBillById.bill,
+      customerId:state.viewAllCustomer.customer,
       error: state.viewBillById.error,
+      billList:state.viewAllBill.bills
     };
   });
 
   const [state, setState] = useState({
     billId: "",
   });
-  const billList = [
-    { billId: 3624803138 },
-    { billId: "9443084071" },
-    { billId: "2054398488" },
-  ];
+
+  const fetchAllBill=()=>{
+    dispatch(viewAllBillThunk(response.customerId))
+  }
+
+  useEffect(fetchAllBill,[]);
 
   const onHandleChange = (event) => {
     const name = event.target.name;
@@ -46,7 +51,7 @@ const ViewBillById = () => {
             <option disabled selected>
               select billId
             </option>
-            {billList.map((bill, index) => (
+            {response.billList.map((bill, index) => (
               <option key={bill.billId} value={bill.billId}>
                 {index + 1}
               </option>

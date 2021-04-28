@@ -107,8 +107,8 @@ const AddCustomerDetail = () => {
             type="tel"
             className="form-control"
             name="mobileNumber"
-            minlength="10"
-            maxlength="10"
+            minLength="10"
+            maxLength="10"
             pattern="[0-9]+"
             onChange={onHandleChange}
           />

@@ -14,18 +14,19 @@ const AddOrRemoveItemFromCart = () => {
       items: state.itemToCart.items,
       order: state.addOrder.orderDetail,
       error: state.addOrder.error,
+      customerId:state.viewAllCustomer.customer,
     };
   });
 
   const onHandlePlace = (e) => {
     e.preventDefault();
-    const customerId = "2266658955";
+    const customerId = response.customerId;
     dispatch(addOrderThunk(customerId));
   };
   const onHandleReduce = (itemId) => {
     const data = {
       itemId: itemId,
-      customerId: "2266658955",
+      customerId: response.customerId,
       quantity: 1,
     };
     dispatch(itemToCartReduceThunk(data));
@@ -33,7 +34,7 @@ const AddOrRemoveItemFromCart = () => {
   const onHandleIncrease = (itemId) => {
     const data = {
       itemId: itemId,
-      customerId: "2266658955",
+      customerId: response.customerId,
       quantity: 1,
     };
     dispatch(itemToCartIncreaseThunk(data));

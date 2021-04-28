@@ -8,10 +8,10 @@ const ViewOrderDetail = () => {
   const response = useSelector((state) => {
     return {
       order: state.viewOrder.orderDetail,
+      orderList: state.viewOrderByCustomer.orderDetails,
       error: state.viewOrder.error,
     };
   });
-  const orderList = [{ orderId: 1 }, { orderId: 2 }, { orderId: 3 }];
   const [state, setState] = useState({
     orderId: "",
   });
@@ -38,7 +38,7 @@ const ViewOrderDetail = () => {
             <option disabled selected>
               select order
             </option>
-            {orderList.map((order, index) => (
+            {response.orderList.map((order, index) => (
               <option key={order.orderId} value={order.orderId}>
                 {index + 1}
               </option>

@@ -9,14 +9,13 @@ const UpdateOrderDetail = () => {
   const response = useSelector((state) => {
     return {
       order: state.updateOrder.orderDetail,
+      orderList: state.viewOrderByCustomer.orderDetails,
       error: state.updateOrder.error,
     };
   });
 
-  const orderList = [{ orderId: 1 }, { orderId: 2 }, { orderId: 3 }];
-
   const [state, setState] = useState({
-    status: "",
+    orderStatus: "",
     orderId: "",
   });
 
@@ -42,7 +41,7 @@ const UpdateOrderDetail = () => {
             <option disabled selected>
               select orderId
             </option>
-            {orderList.map((order, index) => (
+            {response.orderList.map((order, index) => (
               <option key={order.orderId} value={order.orderId}>
                 {index + 1}
               </option>
@@ -53,7 +52,7 @@ const UpdateOrderDetail = () => {
           <label>Status</label>
           <select
             className="form-control"
-            name="status"
+            name="orderStatus"
             onChange={onHandleChange}
           >
             <option disabled selected>

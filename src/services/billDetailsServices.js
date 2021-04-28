@@ -14,3 +14,10 @@ export function viewBillByIdRequest(billId){
      const promise=axios.get(url);
      return promise;
 }
+
+export function viewAllBillRequest(customerId){
+    const url=baseUrl+`/bills/viewbycustomer/${customerId}`;
+     const promise=axios.get(url);
+     return promise;
+
+}

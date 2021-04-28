@@ -8,12 +8,12 @@ const ViewCustomerDetail = () => {
   const response = useSelector((state) => {
     return {
       customer: state.viewCustomer.customer,
+      customerId:state.viewAllCustomer.customer,
       error: state.viewCustomer.error,
     };
   });
   const fetchCustomer = () => {
-    const id = "633638409";
-    dispatch(viewCustomerThunk(id));
+    dispatch(viewCustomerThunk(response.customerId));
   };
   useEffect(fetchCustomer, []);
   return (

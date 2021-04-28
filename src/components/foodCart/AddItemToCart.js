@@ -12,7 +12,8 @@ const AddItemToCart = ({history}) => {
         return{
             itemDetail:state.itemToCart.itemDetail,
             itemList:state.viewAllItem.items,
-            error:state.itemToCart.error
+            error:state.itemToCart.error,
+            customerId:state.viewAllCustomer.customer,
         }
     })
 
@@ -26,7 +27,7 @@ const AddItemToCart = ({history}) => {
   const onHandleAdd=(itemId)=>{
       const data={
         itemId:itemId,
-        customerId:"2266658955",
+        customerId:response.customerId,
         quantity:1
       }
       dispatch(itemToCartIncreaseThunk(data))

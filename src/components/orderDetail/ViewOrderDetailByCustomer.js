@@ -9,11 +9,12 @@ const ViewOrderDetailByCustomer = () => {
     return {
       orderList: state.viewOrderByCustomer.orderDetails,
       error: state.viewOrderByCustomer.error,
+      customerId:state.viewAllCustomer.customer,
     };
   });
 
   const fetchAllOrderByCustomerId = () => {
-    const customerId = "6336384094";
+    const customerId =response.customerId;
     dispatch(viewOrderByCustomerThunk(customerId));
   };
 

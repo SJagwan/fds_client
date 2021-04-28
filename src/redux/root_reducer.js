@@ -32,6 +32,8 @@ import {viewOrderReducer} from "./orderDetail/viewOrderDetail/viewOrderReducer";
 import { viewAllRestaurantReducer } from "./restaurant/viewAllRestaurant/viewAllRestaurantReducer";
 
 import { viewAllItemReducer } from "./item/viewAllItem/viewAllItemReducer";
+import { viewAllCustomerReducer } from "./customer/viewAllCustomer/viewAllCustomerReducer";
+import { viewAllBillReducer } from "./bill/viewAllBills/viewAllBillReducer";
 
 
  export const rootReducer=combineReducers({
@@ -58,7 +60,9 @@ import { viewAllItemReducer } from "./item/viewAllItem/viewAllItemReducer";
      viewBillById : viewBillByIdReducer,
      viewBillByDate: viewBillByDateReducer,
      viewAllRestaurant: viewAllRestaurantReducer,
-     viewAllItem:viewAllItemReducer
+     viewAllItem:viewAllItemReducer,
+     viewAllCustomer:viewAllCustomerReducer,
+     viewAllBill:viewAllBillReducer
 
 
 })

@@ -1,6 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import AddCustomerDetail from "../components/customer/AddCustomerDetail";
 import UpdateCustomerDetail from "../components/customer/UpdateCustomerDetail";
+import ViewAllCustomer from "../components/customer/ViewAllCustomer";
 import ViewCustomerDetail from "../components/customer/ViewCustomerDetail";
 import './page.css'
 
@@ -12,6 +13,7 @@ const CustomerPage = (props) => {
         <div className="page">
           <div className="pageButton">
             <button className="btn btn-outline-dark" onClick={()=>props.history.push(`${props.match.url}/add`)}>Add</button>
+            <button className="btn btn-outline-dark" onClick={()=>props.history.push(`${props.match.url}/select`)}>Login</button>
             <button className="btn btn-outline-dark" onClick={()=>props.history.push(`${props.match.url}/update`)}>Update</button>
             <button className="btn btn-outline-dark" onClick={()=>props.history.push(`${props.match.url}/view`)}>View</button>
           </div>
@@ -22,6 +24,11 @@ const CustomerPage = (props) => {
                 exact
                 path={`${props.match.url}/add`}
                 component={AddCustomerDetail}
+              />
+               <Route
+                exact
+                path={`${props.match.url}/select`}
+                component={ViewAllCustomer}
               />
               <Route
                 exact

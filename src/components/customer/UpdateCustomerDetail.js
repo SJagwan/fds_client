@@ -8,7 +8,8 @@ const UpdateCustomerDetail = () => {
   const response = useSelector((state) => {
     return {
       customer: state.updateCustomer.customer,
-      error: state.updateCustomer.error,
+      customerId:state.viewAllCustomer.customer,
+      error: state.updateCustomer.error
     };
   });
 
@@ -22,7 +23,7 @@ const UpdateCustomerDetail = () => {
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    const data = { ...state, id: "6336384094" };
+    const data = { ...state, id:response.customerId };
     dispatch(updateCustomerThunk(data));
   };
   return (

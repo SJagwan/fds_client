@@ -33,7 +33,6 @@ export const viewAllRestaurantThunk=()=>{
 
     }).catch((error)=>{
       console.log(error.message);
-      
       let objActionFailure=viewAllRestaurantFailure(error.message);
       dispatch(objActionFailure);
     })

@@ -31,7 +31,6 @@ export const viewBillByIdThunk=(data)=>{
 
     }).catch((error)=>{
       console.log(error.message);
-      console.log(error.response.data);
       let objActionFailure=viewBillByIdFailure(error.message)
       dispatch(objActionFailure)
 

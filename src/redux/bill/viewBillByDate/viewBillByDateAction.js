@@ -32,8 +32,7 @@ export const viewBillByDateThunk=(data)=>{
 
     }).catch((error)=>{
       console.log(error.message);
-      console.log(error.response.data);
-      let objActionFailure=viewBillByDateFailure(error.response.data)
+      let objActionFailure=viewBillByDateFailure(error.message)
       dispatch(objActionFailure)
 
     })

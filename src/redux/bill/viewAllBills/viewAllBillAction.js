@@ -31,7 +31,6 @@ export const viewAllBillThunk=(customerId)=>{
 
     }).catch((error)=>{
       console.log(error.message);
-      console.log(error.response.data);
       let objActionFailure=viewAllBillFailure(error.message)
       dispatch(objActionFailure)
 

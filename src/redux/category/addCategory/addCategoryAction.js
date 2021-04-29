@@ -32,7 +32,6 @@ export const addCategoryThunk = (data) => {
       })
       .catch((error) => {
         console.log(error.message);
-        console.log(error.response.data);
         let objActionFailure = addCategoryFailure(error.message);
         dispatch(objActionFailure);
       });

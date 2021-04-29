@@ -34,7 +34,6 @@ export const viewRestaurantByLocationThunk=(state)=>{
 
     }).catch((error)=>{
       console.log(error.message);
-      console.log(error.response.data);
       let objActionFailure=viewRestaurantByLocationFailure(error.message);
       dispatch(objActionFailure);
     })

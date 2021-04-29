@@ -31,8 +31,7 @@ export const viewItemByCategoryThunk=(data)=>{
           })
           .catch((error) => {
             console.log(error.message);
-            console.log(error.response.data);
-            let objActionFailure = viewItemByCategoryFailure(error.response.data)
+            let objActionFailure = viewItemByCategoryFailure(error.message)
             dispatch(objActionFailure)
           });
         

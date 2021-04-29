@@ -30,8 +30,7 @@ export const addItemToRestaurantThunk=(data)=>{
           })
           .catch((error) => {
             console.log(error.message);
-            console.log(error.response.data);
-            let objActionFailure = addItemToRestaurantFailure(error.response.data)
+            let objActionFailure = addItemToRestaurantFailure(error.message)
             dispatch(objActionFailure)
           });
         

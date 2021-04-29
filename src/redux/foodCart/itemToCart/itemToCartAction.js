@@ -59,7 +59,6 @@ export const itemToCartIncreaseThunk = (data) => {
       })
       .catch((error) => {
         console.log(error.message);
-        console.log(error.response.data);
         let objActionFailure = itemToCartFailure(error.message);
         dispatch(objActionFailure);
       });
@@ -79,8 +78,7 @@ export const itemToCartReduceThunk = (data) => {
       })
       .catch((error) => {
         console.log(error.message);
-        console.log(error.response.data);
-        let objActionFailure = itemToCartFailureReduce(error.response.data);
+        let objActionFailure = itemToCartFailureReduce(error.message);
         dispatch(objActionFailure);
       });
   };

@@ -34,8 +34,7 @@ export const addOrderThunk = (customerId) => {
       })
       .catch((error) => {
         console.log(error.message);
-        console.log(error.response.data);
-        let objActionFailure = addOrderFailure(error.response.data);
+        let objActionFailure = addOrderFailure(error.message);
         dispatch(objActionFailure);
       });
   };

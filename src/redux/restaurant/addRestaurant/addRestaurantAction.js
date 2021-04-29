@@ -45,7 +45,6 @@ export const addRestaurantThunk=(state)=>{
 
     }).catch((error)=>{
       console.log(error.message);
-      console.log(error.response.data);
       let objActionFailure=addRestaurantFailure(error.message);
       dispatch(objActionFailure);
     })

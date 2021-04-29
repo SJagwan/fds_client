@@ -29,7 +29,7 @@ export const viewItemThunk=(data)=>{
             dispatch(objActionSuccess)
           })
           .catch((error) => {
-            let objActionFailure = viewItemFailure(error.response.data)
+            let objActionFailure = viewItemFailure(error.message)
             dispatch(objActionFailure)
           });
         

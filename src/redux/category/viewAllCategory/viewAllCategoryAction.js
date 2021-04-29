@@ -32,7 +32,7 @@ export const viewAllCategoryThunk = () => {
       })
       .catch((error) => {
         console.log(error.message);
-        let objActionFailure = viewAllCategoryFailure(error.response.data);
+        let objActionFailure = viewAllCategoryFailure(error.message);
         dispatch(objActionFailure);
       });
   };

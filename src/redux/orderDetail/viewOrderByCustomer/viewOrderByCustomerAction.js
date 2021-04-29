@@ -32,7 +32,6 @@ export const viewOrderByCustomerThunk = (customerId) => {
       })
       .catch((error) => {
         console.log(error.message);
-        console.log(error.response.data);
         let objActionFailure = viewOrderByCustomerFailure(error.message);
         dispatch(objActionFailure);
       });

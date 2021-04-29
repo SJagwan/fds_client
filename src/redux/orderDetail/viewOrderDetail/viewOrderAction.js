@@ -33,8 +33,7 @@ export const viewOrderThunk = (data) => {
       })
       .catch((error) => {
         console.log(error.message);
-        console.log(error.response.data);
-        let objActionFailure = viewOrderFailure(error.response.data);
+        let objActionFailure = viewOrderFailure(error.message);
         dispatch(objActionFailure);
       });
   };

@@ -32,8 +32,7 @@ export const updateOrderThunk = (data) => {
       })
       .catch((error) => {
         console.log(error.message);
-        console.log(error.response.data);
-        let objActionFailure = updateOrderFailure(error.response.data);
+        let objActionFailure = updateOrderFailure(error.message);
         dispatch(objActionFailure);
       });
   };

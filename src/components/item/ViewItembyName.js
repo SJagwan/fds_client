@@ -21,7 +21,6 @@ const ViewItembyName = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     dispatch(viewItemByNameThunk(state));
-    // setState({...state})
   };
   return (
     <div className="container-sm">
@@ -44,7 +43,7 @@ const ViewItembyName = () => {
       </form>
       {response.item ? (
         <div className="container p-3 my-3 bg-dark text-white">
-          <h4>Display Item</h4>
+          <h4>Display Item By Name</h4>
           <DisplayListItemDetail itemList={response.item} />
         </div>
       ) : (

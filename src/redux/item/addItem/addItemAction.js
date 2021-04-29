@@ -38,8 +38,7 @@ export const addItemThunk=(state)=>{
           })
           .catch((error) => {
             console.log(error.message);
-            console.log(error.response.data);
-            let objActionFailure = addItemFailure(error.response.data)
+            let objActionFailure = addItemFailure(error.message)
             dispatch(objActionFailure)
           });
         

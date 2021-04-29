@@ -40,8 +40,7 @@ export const addCustomerThunk=(state)=>{
         dispatch(objActionsuccess)
     }).catch((error)=>{
       console.log(error.message);
-      console.log(error.response.data);
-      let objActionFailure= addCustomerFailure(error.response.data);
+      let objActionFailure= addCustomerFailure(error.message);
       dispatch(objActionFailure);
     })
     }
